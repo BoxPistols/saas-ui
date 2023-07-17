@@ -19,8 +19,8 @@ const ContentContainer = styled(Container)`
 const Content = ({
   numberOfCards,
   numberOfColumns,
-  columnDefs,
-  rowData,
+  // columnDefs,
+  // rowData,
 }: ContentProps) => {
   return (
     <ContentContainer>
@@ -31,6 +31,8 @@ const Content = ({
         <CardGrid
           numberOfCards={numberOfCards}
           numberOfColumns={numberOfColumns}
+          // columnDefs={columnDefs}
+          // rowData={rowData}
         />
       </Box>
     </ContentContainer>

@@ -13,7 +13,7 @@ type Props = ResponsiveGridProps
 
 export const ResponsiveGrid = ({ xs, sm, md, lg, xl, spacing }: Props) => {
   return (
-    <Grid container spacing={spacing}>
+    <Grid container spacing={spacing=2}>
       {Array.from({ length: 12 }, (_, i) => (
         <Grid item xs={xs} sm={sm} md={md} lg={lg} xl={xl} key={i}>
           <Card>
