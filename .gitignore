@@ -37,3 +37,7 @@ next-env.d.ts
 
 # TODO: 検証用
 .vscode
+
+# Storybook
+storybook-static/
+
