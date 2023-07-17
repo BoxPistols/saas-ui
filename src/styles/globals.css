@@ -1,0 +1,38 @@
+:root {
+  /* variables */
+  --header-height: 64px;
+  --default-segment-chart-area-height: 360px;
+  --segment-design-header-height: 48px;
+  --text-ptimary: #223354;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 14px;
+}
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Inter, Noto Sans JP, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-ptimary);
+  min-height: 100vh;
+  /* これはwebkitやmoz系のブラウザでフォントが滑らかになるようにするためのもの */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

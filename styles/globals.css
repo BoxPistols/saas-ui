@@ -1,0 +1,22 @@
+/* styles/global.css */
+/* :root {} */
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #fff;
+  min-height: 100vh;
+  color: #25282c;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* padding: 4vh 8vw; */
+  font-family: "Inter", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

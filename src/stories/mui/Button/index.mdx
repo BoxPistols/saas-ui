@@ -1,0 +1,456 @@
+import { Meta } from "@storybook/blocks";
+import Colors from "@/assets/colors.svg";
+import { Container, Typography, Button, Box } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "@/lib/theme";
+import { CancelButton } from "@/components/Button/CancelButton";
+import { ButtonSet } from "@/components/Button/ButtonSet";
+import AddIcon from "@mui/icons-material/Add";
+
+<Meta title="Mui/Button/Info" />
+
+<ThemeProvider theme={theme}>
+
+  <Container>
+    # MuiButton
+
+    - [About](#about)
+    - [Color](#color)
+    - [Variant](#variant)
+    - [Others](#others)
+    - [Link](#link)
+
+    ## About
+
+    ボタンは、ユーザーが実行できるアクションを伝達します
+
+    <details>
+    <summary>ボタンは主に次のような場所に配置されます</summary>
+      - フォーム送信
+      - ダイアログ
+      - リンク
+      - ナビゲーション
+      - 要素の選択
+      - その他各種、ユーザーがアクションを実行できる場所
+    </details>
+
+    <details>
+    <summary>ボタンの主な仕様は以下の通りです</summary>
+    - 未指定では`theme`の`primary.main`の色が適用されます
+    - サイズは基本的には未指定のままが最も利用されます=default = medium
+    - 基本的には`contained`ボタンを使用することが多く、その他のボタンは特定の場面で使用します
+    - themeの設定でデフォルトのボタンUIを変更することができます
+    - 用途の決まったパターンのボタンはカスタムコンポーネントとして作成していきます
+    - ※装飾のためにボタンを使用することはなるべく避けてください。ボタンはユーザーがアクションを実行できる場所を示すために使用されるべきです
+    </details>
+
+    ## color
+
+    <Box display="flex" gap={1}>
+      <Button color="primary">primary</Button>
+      <Button color="secondary">secondary</Button>
+      <Button color="success">success</Button>
+      <Button color="error">error</Button>
+      <Button color="warning">warning</Button>
+      <Button color="info">info</Button>
+      <Button color="inherit">inherit</Button>
+    </Box>
+
+    ```tsx
+    <Box display="flex" gap={1}>
+      <Button color="primary">primary</Button>
+      <Button color="secondary">secondary</Button>
+      <Button color="success">success</Button>
+      <Button color="error">error</Button>
+      <Button color="warning">warning</Button>
+      <Button color="info">info</Button>
+      <Button color="inherit">inherit</Button>
+    </Box>
+    ```
+
+    colorはボタンの色を変更するもので、デフォルトの色は`primary`です <br/>
+    ボタンカラーは用途に応じて、ユーザーに伝える意味合いに一貫性を持たせるために、以下のように使用します
+
+    - `primary`：ユーザーが実行するメインのアクション
+    - `secondary`：ユーザーが実行するセカンダリアクション
+    - `success`：成功したアクション
+    - `error`：失敗したアクション
+    - `warning`：警告アクション
+    - `info`：情報アクション
+    - `inherit`: inheritはあまり使わないですが、親要素の色を継承し、デフォルトでは薄いグレーになります
+
+
+    ## variant
+
+    variantはボタンの種類を変更するもので、以下の3種類があります
+    <Box display="flex" gap={1}>
+      <Button variant="contained">contained</Button>
+      <Button variant="outlined">outlined</Button>
+      <Button variant="text">text</Button>
+    </Box>
+
+    ```tsx
+    <Button variant="contained">contained</Button>
+    <Button variant="outlined">outlined</Button>
+    <Button variant="text">text</Button>
+    ```
+
+    variantの用途は以下の通りです
+
+    - `contained`：ユーザーが実行するメインのアクション
+    - `outlined`: containedの補助として、特にキャンセルボタンなどに使用します
+    - `text`: outlinedのさらなる補助として、特にキャンセルボタンなどに使用します
+
+    ### default
+
+    <Button>default</Button>
+
+    ```tsx
+    <Button>default</Button>
+    ```
+
+    基本的にはこのdefaultスタイルの`contained`ボタンを使用します <br/>
+    デフォルトではthemeのprimary.mainの色が適用されます
+
+    #### テーマ設定
+
+    デフォルトのUIはtheme設定で変更でき、今回はデフォルトのUIを`contained`に指定しています <br/>
+    ※この設定をしない限り、デフォルトのUIはあまりメインでは使わないUIの`textボタン`になります
+
+    ```tsx
+    // theme.ts
+    components: {
+      MuiButton: {
+        defaultProps: {
+          variant: "contained", // デフォルトで'contained'を設定
+        },
+      },
+    },
+    ```
+
+    ### outlined
+
+    <Button variant="outlined">outlined</Button>
+
+    ```tsx
+    <Button variant="outlined">outlined</Button>
+    ```
+
+    #### Use case
+
+    ボタンセットの中で特定のボタンを目立たせたい場合の対となる補助として、特にキャンセルボタンなどに使用します<br/>
+
+    <Box display="flex" gap={1}>
+      <Button variant="outlined">outlined</Button>
+      <Button>default</Button>
+    </Box>
+
+    ```tsx
+    <Box display="flex" gap={1}>
+      <Button variant="outlined">outlined</Button>
+      <Button>default</Button>
+    </Box>
+    ```
+    ここではスタイリングとして`flex`で並べて`gap`で要素間の隙間を指定しています
+
+    さらにUIUXを考慮し、Primaryカラーはポジティブな実行に使用することが多いため、キャンセルボタンなどには別のカラー、`secondary`カラーを使用することが多いです
+
+    <details>
+    <summary>MuiのキャンセルUIの考察</summary>
+    - そう考えると、キャンセルというvariantが一見ありそうですが、それはありません。あくまでMuiのButtonではvariantはUIの種類を表すもので、挙動を指すキャンセルボタンはvariantではなく`color`で表現します
+    - 必要があればthemeで`cancel`という追加定義を設定して展開しても良いですが、必要以上にカスタムを行うと運用難易度も上がるため、基本的には補助カラーの`secondary`カラーを使用することが多いです
+    - ボタンの並べ方は、右側にユーザー行動のメインとなるボタンを配置し、左側にその逆の挙動を示す補助ボタンを配置することが多いです
+    </details>
+
+    <Box display="flex" gap={1} mt={4}>
+      <Button variant="outlined" color="secondary">outlined</Button>
+      <Button>default</Button>
+    </Box>
+
+    ```tsx
+    <Box display="flex" gap={1}>
+      <Button variant="outlined" color="secondary">outlined</Button>
+      <Button color="secondary">default</Button>
+    </Box>
+    ```
+    このような頻出するUIが何度も出てくる場合は、カスタムのコンポーネントを作成していきます。
+    例えば以下のようになります
+
+    <details>
+      <summary>カスタムコンポーネントの作成</summary>
+
+      ```tsx
+      // components/Button/CancelButton.tsx
+      import { ReactNode } from "react";
+      import { Button } from "@mui/material";
+
+      type Props = {
+        children: ReactNode;
+      };
+
+      export const CancelButton = ({ children, ...props }: Props) => {
+        return (
+          <Button variant="outlined" color="secondary" {...props}>
+            {children}
+          </Button>
+        );
+      };
+      ```
+    </details>
+
+    #### ボタンセットの中での設定
+
+    <Box display="flex" gap={1}>
+      <CancelButton>キャンセル</CancelButton>
+      <Button>実行する</Button>
+    </Box>
+
+    ```tsx
+    <Box display="flex" gap={1}>
+      <CancelButton>Cancel</CancelButton>
+      <Button>Submit</Button>
+    </Box>
+    ```
+
+    さらに、こうなってくるとこの頻出する組み合わせ自体もまとめてコンポーネント化する考えが出てきます <br/>
+    例えば、`CancelButton`と`SubmitButton`をまとめて`ButtonSet`というコンポーネントにまとめてしまうという考えです
+
+    <details>
+      <summary>ButtonSetの作成</summary>
+
+      ```tsx
+      // components/Button/ButtonSet.tsx
+      import React from "react";
+      import { Box, Button } from "@mui/material";
+      import { CancelButton } from "./CancelButton";
+
+      type Props = {
+        cancelText: string;
+        submitText: string;
+        type?: "submit" | "reset" | "button";
+      };
+
+      export const ButtonSet = ({
+        cancelText,
+        submitText,
+        type,
+        ...props
+      }: Props) => {
+        return (
+          <Box display="flex" gap={1}>
+            <CancelButton>{cancelText}</CancelButton>
+            <Button type={type ? type : "submit"} {...props}>
+              {submitText}
+            </Button>
+          </Box>
+        );
+      };
+      ```
+    </details>
+
+    このようにすることで、ボタンセットの実装は以下のようになります
+
+    <ButtonSet cancelText="キャンセル" submitText="実行する"/>
+
+    ```tsx
+    <ButtonSet cancelText="キャンセル" submitText="実行する"/>
+    ```
+
+    ずいぶんと整理されました。
+    このように`ButtonSet`コンポーネントのpropsで設定することで、ボタンセットの中だけ表示設定をまとめて行うことができます。これでUIの統一性が保たれ、実装者はボタンセットの中でのUI設計を意識する必要がなくなります<br/>
+    厳密にはその他のUIパターンでのProps設定やTypeScript設計なども必要ですが、ここではUIの統一性を保つための考え方を紹介しています
+
+
+    ### text Button
+
+    <Button variant="text">text button</Button>
+
+    ```tsx
+    <Button variant="text">text button</Button>
+    ```
+
+    textボタンはあまり使用されませんが、特定の場面で使用します <br/>
+    例えば、ボタンセットの中で特にユーザーが能動的に押さないであろう「中断する」などの選択肢がユーザーに一応は必要な時などに使用します <br/>
+    ぱっと見た感じは、文字列のリンクのような感じですので、単体で使うときは注意が必要です
+
+    <Box display="flex" gap={1}>
+      <Button variant="text" color="secondary">中断する</Button>
+      <Button>続行する</Button>
+    </Box>
+
+    ```tsx
+    <Box display="flex" gap={1}>
+      <Button variant="text" color="secondary">中断する</Button>
+      <Button>続行する</Button>
+    </Box>
+    ```
+
+    ## size
+
+    <Box display="flex" alignItems="center" gap={1}>
+      <Button size="small">small</Button>
+      <Button>medium</Button>
+      <Button size="large">large</Button>
+    </Box>
+
+    ```tsx
+    <Box display="flex" gap={1}>
+      <Button size="small">small</Button>
+      <Button>medium</Button>
+      <Button size="large">large</Button>
+    </Box>
+    ```
+    sizeは、ボタンのサイズを変更するものです <br/>
+    デフォルトのサイズは、`medium`です <br/>
+    基本的には、ボタンのサイズは変更せずに、ボタンのサイズは統一することが望ましいです <br/>
+    - 注意点
+      - ボタンのサイズを変更すると、ボタンの高さが変わるだけでなく、ボタンの幅も変わります <br/>
+      - 文字数が少なく小さなボタンはBadgeコンポーネントと見た目が似てくるため、視覚上の区分化に注意が必要です
+
+    ### fullWidth
+
+    <Button fullWidth>fullWidth</Button>
+
+    ```tsx
+    <Button fullWidth>fullWidth</Button>
+    ```
+    fullWidthは、ボタンの幅を親要素いっぱいに広げるものです <br/>
+    例えば、ボタンセットの中で、ボタンの幅を揃えたい場合などに使用します <br/>
+
+
+    ## Others
+
+
+    ### disabled
+
+    <Button disabled>disabled</Button>
+
+    ```tsx
+    <Button disabled>disabled</Button>
+    ```
+
+    disabled は、ボタンの挙動を無効化するものです <br/> 特定の条件下でボタンを無効化することで、ユーザーに対してボタンを押せないことを伝えることができます <br/>
+    コントラストが繊細な状態なため、themeで微妙な設定をすることが望ましいです <br/>
+
+    <details>
+    <summary>theme設定 MuiのCSSカスタム</summary>
+    ```tsx
+    MuiButton: {
+      ...
+      styleOverrides: {
+        root: {
+          "&.Mui-disabled": { // disabledの時のスタイル
+            color: colors.gray300, // 文字色
+          },
+        },
+      },
+    },
+    ```
+
+    - `&.Mui-disabled`は、disabledの時のスタイルを指定するためのものです <br/>
+    - これはMui特有の書き方で、disabledの時のスタイルを指定するためには、このように書く必要があります <br/>
+    - CSSは親要素のスタイルを子要素に継承する仕様になっていますが、disabledなどのいくつかのスタイルは、親要素のスタイルを継承しないためこのように書く必要があります <br/>
+    - ここに限らずMuiのデザインオーバーライドは、このような書き方が多いです <br/>
+    - このようなCSSクラスの探し方は、ブラウザの開発者ツールを使って確認、または、[公式ドキュメント](https://mui.com/customization/how-to-customize/#5-global-css-overrides)を参照してください
+    </details>
+
+    ### Icon Button
+
+    #### startIcon
+
+    <Button startIcon={<AddIcon />}>startIcon</Button>
+
+    ```tsx
+    <Button startIcon={<AddIcon />}>startIcon</Button>
+    ```
+    startIconは、ボタンの先頭にアイコンを表示するものです <br/>
+    例えば、ボタンセットの中で、ボタンの先頭にアイコンを表示したい場合などに使用します <br/>
+
+
+    #### endIcon
+
+    <Button endIcon={<AddIcon />}>endIcon</Button>
+
+    ```tsx
+    <Button endIcon={<AddIcon />}>endIcon</Button>
+    ```
+    endIconは、ボタンの末尾にアイコンを表示するものです <br/>
+    例えば、ボタンセットの中で、ボタンの末尾にアイコンを表示したい場合などに使用します <br/>
+
+
+    ### interractions
+
+    #### disableElevation
+
+    <Button disableElevation={false}>disableElevation</Button>
+
+    ```tsx
+    <Button disableElevation={false}>disableElevation</Button>
+    ```
+
+    disableElevationは、ボタンの影を無効化するものです <br/>
+    themeの設定で既にボタンの影を無効化している場合、このプロパティは使用しません <br/>
+    ボタンの影を個別に有効化したい場合は、`disableElevation={false}`で影を消す挙動を無効化し、影を出すことができます<br/>
+    またはグローバルに設定する場合はthemeの設定で`defaultProps: {disableElevation: bool`の箇所を変更します
+
+    #### disableRipple
+
+    <Button disableRipple>disableRipple</Button>
+
+    ```tsx
+    <Button disableRipple>disableRipple</Button>
+    ```
+    disableRippleは、ボタンのクリック時の波紋を無効化するものです <br/>
+    グローバルに設定する場合はthemeの設定で`defaultProps: {disableRipple: bool`箇所を変更します <br/>
+
+    {/* ### component
+
+    <Button component="a" href="https://mui.com/" target="_blank">
+      component
+    </Button>
+
+    ```tsx
+    <Button component="a" href="https://mui.com/" target="_blank">
+      component
+    </Button>
+    ```
+    targetは、ボタンのリンク先を新しいタブで開くかどうかを変更するものです <br/>
+    例えば、ボタンをリンクにしたい場合などに使用します <br/>
+
+    componentは、ボタンのコンポーネントを変更するものです <br/>
+    例えば、ボタンをリンクにしたい場合などに使用します <br/> */}
+
+
+    {/* ### href
+
+    <Button href="https://mui.com/" target="_blank" color="secondary">
+    <Typography>
+      href
+    </Button>
+
+    ```tsx
+    <Button href="https://mui.com/" target="_blank">
+      href
+    </Button>
+    ```
+    hrefは、ボタンのリンク先を変更するものです <br/>
+    例えば、ボタンをリンクにしたい場合などに使用します <br/> */}
+
+    ## Link
+
+    <div className="link-list">
+      <a
+        className="link-item"
+        href="https://mui.com/material-ui/react-button/"
+        target="_blank"
+      >
+        <img src={Colors.src} alt="colors" />
+        <span>
+          <strong>MUI</strong>
+          Button
+        </span>
+      </a>
+    </div>
+
+  </Container>
+</ThemeProvider>
