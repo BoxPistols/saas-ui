@@ -2,6 +2,18 @@ import { Meta } from "@storybook/react"
 import { ResponsiveGrid } from "./ResponsiveGrid"
 import Typography from "@mui/material/Typography"
 
+interface ResponsiveGridProps {
+  xs: number
+  sm: number
+  md: number
+  lg: number
+  xl: number
+  spacing: number
+  numberOfCards: number
+}
+
+type Props = ResponsiveGridProps
+
 const ResponsiveGridStory: Meta = {
   title: "Stories/Grid",
   component: ResponsiveGrid,
@@ -43,6 +55,11 @@ const ResponsiveGridStory: Meta = {
       defaultValue: 2,
       table: { category: "breakpoint" },
     },
+    numberOfCards: {
+      control: { type: 'range', min: 1, max: 32 },
+      defaultValue: 12,
+      table: { category: 'properties' },
+    },
   },
 }
 
@@ -58,3 +75,4 @@ export const Default = (args: any) => {
     </>
   )
 }
+
