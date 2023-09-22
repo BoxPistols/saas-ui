@@ -13,8 +13,7 @@ import { theme } from "@/lib/theme"
 
 ## About
 
-Mui のカラーはマテリアルデザインのカラースキームを採用しています
-そのため、Mui のカラーを理解するには、マテリアルデザインのカラースキームを理解する必要があります
+Mui のカラーはマテリアルデザインのカラースキームを採用していますそのため、Mui のカラーを理解するには、マテリアルデザインのカラースキームを理解する必要があります
 
 以下のリンクを参照してください<br/>
 
@@ -54,13 +53,23 @@ Mui のカラーはマテリアルデザインのカラースキームを採用�
 - `contrastText`とは、端的には最も明るい色を指し、背景とのコントラストを確保しながら、同じグループのテキストカラーとして使用することができます
 - `white`などを直接指定することもできますが`contrastText`を使用することで、テーマカラーの変更に柔軟に対応することができます
 
-<Box bgcolor={theme.palette.primary.main} color={theme.palette.primary.contrastText} width="fit-content" p={1}>
+<Box
+  bgcolor={theme.palette.primary.main}
+  color={theme.palette.primary.contrastText}
+  width="fit-content"
+  p={1}
+>
   {"box"}
 </Box>
 
 ```tsx
-<Box bgcolor={theme.palette.primary.main} color={theme.palette.primary.contrastText} width="fit-content" p={1}>
-  box
+<Box
+  bgcolor={theme.palette.primary.main}
+  color={theme.palette.primary.contrastText}
+  width="fit-content"
+  p={1}
+>
+  {"box"}
 </Box>
 ```
 
@@ -87,7 +96,7 @@ Mui のカラーはマテリアルデザインのカラースキームを採用�
     width: "fit-content",
   }}
 >
-  greyBox
+  {"greyBox"}
 </Box>
 
 ```tsx
@@ -99,7 +108,7 @@ Mui のカラーはマテリアルデザインのカラースキームを採用�
     width: "fit-content",
   }}
 >
-  greyBox
+  {"greyBox"}
 </Box>
 ```
 

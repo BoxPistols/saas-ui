@@ -1,10 +1,10 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from "@storybook/blocks"
 // import Colors from '@/stories/assets/colors.svg';
-import { Container, Button, Box, Typography } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from '@/lib/theme';
+import { Container, Button, Box, Typography } from "@mui/material"
+import { ThemeProvider } from "@mui/material/styles"
+import { theme } from "@/lib/theme"
 
-<Meta title='Tokens/Typography/Info' />
+<Meta title="Tokens/Typography/Info" />
 
 <ThemeProvider theme={theme}>
 <Container>
@@ -13,8 +13,7 @@ import { theme } from '@/lib/theme';
 
 ## About
 
-Typography コンポーネントは、テキストのスタイルやフォーマットを指定するために使用されます。
-[Mui Typography](https://mui.com/material-ui/react-typography/)
+Typography コンポーネントは、テキストのスタイルやフォーマットを指定するために使用されます。 [Mui Typography](https://mui.com/material-ui/react-typography/)
 
 ## WebFont
 
@@ -39,21 +38,15 @@ Typography コンポーネントは、テキストのスタイルやフォーマ
 
 余白は 8 の倍数で省略記法も可能です
 
-<Box>
-  <Typography>
-    余白指定一覧
-    <ul>
-      <li>mt: maginTop</li>
-      <li>mr: maginRight</li>
-      <li>mb: maginBottom</li>
-      <li>ml: maginLeft</li>
-      <li>m: 全４方向一括指定</li>
-      <li>mx: 左右2方向一括指定</li>
-      <li>my: 上下2方向一括指定</li>
-    </ul>
-    paddingもm→pで同様の作用
-  </Typography>
-</Box>
+- mt: maginTop
+- mr: maginRight
+- mb: maginBottom
+- ml: maginLeft
+- m: 全４方向一括指定
+- mx: 左右 2 方向一括指定
+- my: 上下 2 方向一括指
+
+padding も m→p で同様の作用
 
 ### 主要なオプション
 
@@ -89,58 +82,58 @@ Mui Typography コンポーネントは、以下のような主要なバリア�
 
 {' '}
 
-<Typography variant='h2'>{'h2 見出しテキスト'}</Typography>
-<Typography variant='subtitle1'>
-  {'subtitle1 サブタイトル、説明文を書く'}
+<Typography variant="h2">{"h2 見出しテキスト"}</Typography>
+<Typography variant="subtitle1">
+  {"subtitle1 サブタイトル、説明文を書く"}
 </Typography>
 ```tsx
-<Typography variant='h2'>"h2 見出しテキスト</Typography>
-<Typography variant='subtitle1'>
-  subtitle1 サブタイトル、説明文を書く
+<Typography variant="h2">{"h2 見出しテキスト"}</Typography>
+<Typography variant="subtitle1">
+  {"subtitle1 サブタイトル、説明文を書く"}
 </Typography>
 ```
 
-<Typography variant='h3'>h3 見出しテキスト</Typography>
-<Typography variant='subtitle2'>
-  {'subtitle2 サブタイトル、説明文を書く'}
+<Typography variant="h3">h3 見出しテキスト</Typography>
+<Typography variant="subtitle2">
+  {"subtitle2 サブタイトル、説明文を書く"}
 </Typography>
 ```tsx
-<Typography variant='h3'>h3 見出しテキスト</Typography>
-<Typography variant='subtitle2'>
-  subtitle2 サブタイトル、説明文を書く
+<Typography variant="h3">{"h3 見出しテキスト"}</Typography>
+<Typography variant="subtitle2">
+  {"subtitle2 サブタイトル、説明文を書く"}
 </Typography>
 ```
 
 {' '}
 
-<Typography variant='lg'>{'lg拡張variant'}</Typography>
-<Typography variant='sm'>{'sm拡張variant'}</Typography>
+<Typography variant="lg">{"lg拡張variant"}</Typography>
+<Typography variant="sm">{"sm拡張variant"}</Typography>
 ```tsx
-<Typography variant='lg'>lg拡張variant</Typography>
-<Typography variant='sm'>sm拡張variant</Typography>
+<Typography variant="lg">{"lg拡張variant"}</Typography>
+<Typography variant="sm">{"sm拡張variant"}</Typography>
 ```
 
 {' '}
 
 <Typography
-  variant='ml'
-  color='warning.main'
-  align='center'
-  fontWeight='bold'
-  display='block'
+  variant="ml"
+  color="warning.main"
+  align="center"
+  fontWeight="bold"
+  display="block"
   mt={2}
 >
-  {'オプション指定'}
+  {"オプション指定"}
 </Typography>
 ```tsx
 <Typography
-  color='warning.main'
-  align='center'
-  fontWeight='bold'
-  display='block'
+  color="warning.main"
+  align="center"
+  fontWeight="bold"
+  display="block"
   mt={2}
 >
-  オプション指定
+  {"オプション指定"}
 </Typography>
 ```
 
