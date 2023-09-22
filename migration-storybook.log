@@ -1,0 +1,220 @@
+🔎 checking possible migrations..
+
+🔎 found a 'github-flavored-markdown-mdx' migration:
+╭ Automigration detected ────────────────────────────────────╮
+│                                                            │
+│   In MDX1 you had the option of using GitHub flavored      │
+│   markdown.                                                │
+│                                                            │
+│   Storybook 7.0 uses MDX2 for compiling MDX, and thus no   │
+│   longer supports GFM out of the box.                      │
+│   Because of this you need to explicitly add the GFM       │
+│   plugin in the addon-docs options:                        │
+│   https://storybook.js.org/docs/react/writing-docs/mdx#l   │
+│   ack-of-github-flavored-markdown-gfm                      │
+│                                                            │
+│   We recommend you follow the guide on the link above,     │
+│   however we can add a temporary storybook addon that      │
+│   helps make this migration easier.                        │
+│   We'll install the addon and add it to your storybook     │
+│   config.                                                  │
+│                                                            │
+╰────────────────────────────────────────────────────────────╯
+? Do you want to run the 'github-flavored-markdown-mdx' migration on your project? › (Y/n)✔ Do you want to run the 'github-flavored-markdown-mdx' migration on your project? … yes
+✅ Adding "@storybook/addon-mdx-gfm" addon
+✅ ran github-flavored-markdown-mdx migration
+
+⚠️  failed to check fix autodocsTrue
+
+Error: Unable to find or evaluate .storybook/main.ts: Cannot find module '@storybook/addon-onboarding/package.json'
+Require stack:
+- /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-common/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/telemetry/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/bin/index.js
+    at getStorybookData (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:111:6329)
+    at async runFixes (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:366:1181)
+    at async automigrate (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:363:676)
+    at async doUpgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3419)
+    at async withTelemetry (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-server/dist/index.js:113:3659)
+    at async upgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3865)
+
+⚠️  failed to check fix addReact
+
+Error: Unable to find or evaluate .storybook/main.ts: Cannot find module '@storybook/addon-onboarding/package.json'
+Require stack:
+- /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-common/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/telemetry/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/bin/index.js
+    at getStorybookData (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:111:6329)
+    at async runFixes (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:366:1181)
+    at async automigrate (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:363:676)
+    at async doUpgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3419)
+    at async withTelemetry (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-server/dist/index.js:113:3659)
+    at async upgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3865)
+
+⚠️  failed to check fix missing-babelrc
+
+Error: Unable to find or evaluate .storybook/main.ts: Cannot find module '@storybook/addon-onboarding/package.json'
+Require stack:
+- /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-common/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/telemetry/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/bin/index.js
+    at getStorybookData (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:111:6329)
+    at async runFixes (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:366:1181)
+    at async automigrate (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:363:676)
+    at async doUpgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3419)
+    at async withTelemetry (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-server/dist/index.js:113:3659)
+    at async upgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3865)
+
+⚠️  failed to check fix angular-builders-multiproject
+
+Error: Unable to find or evaluate .storybook/main.ts: Cannot find module '@storybook/addon-onboarding/package.json'
+Require stack:
+- /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-common/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/telemetry/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/bin/index.js
+    at getStorybookData (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:111:6329)
+    at async runFixes (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:366:1181)
+    at async automigrate (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:363:676)
+    at async doUpgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3419)
+    at async withTelemetry (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-server/dist/index.js:113:3659)
+    at async upgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3865)
+
+⚠️  failed to check fix angular-builders
+
+Error: Unable to find or evaluate .storybook/main.ts: Cannot find module '@storybook/addon-onboarding/package.json'
+Require stack:
+- /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-common/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/telemetry/dist/index.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js
+- /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/bin/index.js
+    at getStorybookData (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:111:6329)
+    at async runFixes (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:366:1181)
+    at async automigrate (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:363:676)
+    at async doUpgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3419)
+    at async withTelemetry (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/core-server/dist/index.js:113:3659)
+    at async upgrade (/Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@storybook/cli/dist/generate.js:395:3865)
+
+╭ Migration check ran with failures ─────────────────────────╮
+│                                                            │
+│   Successful migrations:                                   │
+│                                                            │
+│   github-flavored-markdown-mdx                             │
+│                                                            │
+│   Failed migrations:                                       │
+│                                                            │
+│   autodocsTrue:                                            │
+│   Unable to find or evaluate .storybook/main.ts: Cannot    │
+│   find module '@storybook/addon-onboarding/package.json'   │
+│   Require stack:                                           │
+│   - /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts     │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/core-common/dist/index.js                       │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/telemetry/dist/index.js                         │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/dist/generate.js                            │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/bin/index.js                                │
+│   addReact:                                                │
+│   Unable to find or evaluate .storybook/main.ts: Cannot    │
+│   find module '@storybook/addon-onboarding/package.json'   │
+│   Require stack:                                           │
+│   - /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts     │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/core-common/dist/index.js                       │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/telemetry/dist/index.js                         │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/dist/generate.js                            │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/bin/index.js                                │
+│   missing-babelrc:                                         │
+│   Unable to find or evaluate .storybook/main.ts: Cannot    │
+│   find module '@storybook/addon-onboarding/package.json'   │
+│   Require stack:                                           │
+│   - /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts     │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/core-common/dist/index.js                       │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/telemetry/dist/index.js                         │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/dist/generate.js                            │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/bin/index.js                                │
+│   angular-builders-multiproject:                           │
+│   Unable to find or evaluate .storybook/main.ts: Cannot    │
+│   find module '@storybook/addon-onboarding/package.json'   │
+│   Require stack:                                           │
+│   - /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts     │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/core-common/dist/index.js                       │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/telemetry/dist/index.js                         │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/dist/generate.js                            │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/bin/index.js                                │
+│   angular-builders:                                        │
+│   Unable to find or evaluate .storybook/main.ts: Cannot    │
+│   find module '@storybook/addon-onboarding/package.json'   │
+│   Require stack:                                           │
+│   - /Users/ai/dev/DesignOps/saas-ui/.storybook/main.ts     │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/core-common/dist/index.js                       │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/telemetry/dist/index.js                         │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/dist/generate.js                            │
+│   - /Users/ai/.npm/_npx/bc473693d981ae5b/node_modules/@s   │
+│   torybook/cli/bin/index.js                                │
+│                                                            │
+│   You can find the full logs in /Users/ai/dev/DesignOps/   │
+│   saas-ui/migration-storybook.log                          │
+│                                                            │
+│   ─────────────────────────────────────────────────        │
+│                                                            │
+│   If you'd like to run the migrations again, you can do    │
+│   so by running 'npx storybook@next automigrate'           │
+│                                                            │
+│   The automigrations try to migrate common patterns in     │
+│   your project, but might not contain everything needed    │
+│   to migrate to the latest version of Storybook.           │
+│                                                            │
+│   Please check the changelog and migration guide for       │
+│   manual migrations and more information:                  │
+│   https://storybook.js.org/migration-guides/7.0            │
+│   And reach out on Discord if you need help:               │
+│   https://discord.gg/storybook                             │
+│                                                            │
+│   ─────────────────────────────────────────────────        │
+│                                                            │
+│   Attention: The following dependencies are duplicated     │
+│   which might cause unexpected behavior:                   │
+│                                                            │
+│   @storybook/core-common:                                  │
+│   7.4.4, 7.0.27                                            │
+│                                                            │
+│   @storybook/csf-tools:                                    │
+│   7.4.4, 7.0.27                                            │
+│                                                            │
+│   @storybook/node-logger:                                  │
+│   7.4.4, 7.0.27                                            │
+│                                                            │
+│   @storybook/types:                                        │
+│   7.4.4, 7.0.27                                            │
+│                                                            │
+│   You can find more information for a given dependency     │
+│   by running yarn why <package-name>                       │
+│                                                            │
+╰────────────────────────────────────────────────────────────╯
+

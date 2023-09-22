@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react"
 import { useState } from "react"
-import { CustomDialog } from "./CustomDialog"
 import { Typography, Button } from "@mui/material"
+import { CustomDialog } from "."
 
 type Story = StoryObj<typeof CustomDialog>
 
@@ -9,6 +9,12 @@ export default {
   title: "Component/CustomDialog",
   component: CustomDialog,
   tags: ["autodocs"],
+  argTypes: {
+    open: { control: "boolean" },
+    title: { control: "text" },
+    content: { control: "text" },
+    actions: { control: "text" },
+  },
 } as Meta
 
 const mockContent = (
@@ -46,7 +52,7 @@ export const CustomDialogStory = ({}: Story) => {
       </Button>
       <CustomDialog
         open={open}
-        title="Modal title"
+        title="Dialog title"
         onClose={handleClose}
         content={
           <>

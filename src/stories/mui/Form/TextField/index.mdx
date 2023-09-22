@@ -1,5 +1,5 @@
-import { Meta } from "@storybook/blocks";
-import Colors from "@/assets/colors.svg";
+import { Meta } from "@storybook/blocks"
+import Colors from "@/assets/colors.svg"
 import {
   Container,
   Typography,
@@ -8,9 +8,9 @@ import {
   FormControl,
   TextField,
   InputLabel,
-} from "@mui/material";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "@/lib/theme";
+} from "@mui/material"
+import { ThemeProvider } from "@mui/material/styles"
+import { theme } from "@/lib/theme"
 
 <Meta title="Mui/Form/TextField/Info" />
 
@@ -198,7 +198,7 @@ import { theme } from "@/lib/theme";
     Labelを分離することもできます。その際は、`InputLabel`を使用し、`shrink`を指定します。
 
     <Box display="flex" flexDirection="column" gap={4} maxWidth={480} mt={4} mb={3}>
-      <FormControl variant="standard"shrink>
+      <FormControl variant="standard" shrink>
         <InputLabel shrink htmlFor="name" sx={{ mt: -2}}>Name</InputLabel>
         <TextField
           id="name"
@@ -208,7 +208,7 @@ import { theme } from "@/lib/theme";
           />
       </FormControl>
 
-      <FormControl variant="standard"shrink>
+      <FormControl variant="standard" shrink>
         <InputLabel shrink htmlFor="email" sx={{ mt: -2}}>Email</InputLabel>
         <TextField
           id="email"
@@ -218,7 +218,7 @@ import { theme } from "@/lib/theme";
           />
       </FormControl>
 
-      <FormControl variant="standard"shrink>
+      <FormControl variant="standard" shrink>
         <InputLabel shrink htmlFor="message" sx={{ mt: -2}}>Message</InputLabel>
         <TextField
           id="message"
@@ -236,7 +236,7 @@ import { theme } from "@/lib/theme";
     <details>
     <summary>Code</summary>
     ```tsx
-    <FormControl variant="standard"shrink>
+    <FormControl variant="standard" shrink>
       <InputLabel shrink htmlFor="name" sx={{ mt: -2}}>Name</InputLabel>
       <TextField
         id="name"
@@ -246,7 +246,7 @@ import { theme } from "@/lib/theme";
         />
     </FormControl>
 
-    <FormControl variant="standard"shrink>
+    <FormControl variant="standard" shrink>
       <InputLabel shrink htmlFor="email" sx={{ mt: -2}}>Email</InputLabel>
       <TextField
         id="email"
@@ -256,7 +256,7 @@ import { theme } from "@/lib/theme";
         />
     </FormControl>
 
-    <FormControl variant="standard"shrink>
+    <FormControl variant="standard" shrink>
       <InputLabel shrink htmlFor="message" sx={{ mt: -2}}>Message</InputLabel>
       <TextField
         id="message"
