@@ -1,9 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react"
-import { useState } from "react"
+import { ComponentProps, useState } from "react"
 import { Typography, Button } from "@mui/material"
 import { CustomDialog } from "."
+import { Default } from "@/stories/theme/ResponsiveGrid.stories"
 
 type Story = StoryObj<typeof CustomDialog>
+type CustomDialogStoryProps = ComponentProps<typeof CustomDialog>
 
 export default {
   title: "Component/CustomDialog",
@@ -14,6 +16,7 @@ export default {
     title: { control: "text" },
     content: { control: "text" },
     actions: { control: "text" },
+    IconClose: { control: "boolean" }, // IconClose のためのコントローラを追加
   },
 } as Meta
 
@@ -34,15 +37,35 @@ const mockContent = (
   </>
 )
 
-export const CustomDialogStory = ({}: Story) => {
+type ActionsProps = {
+  handleClose: () => void
+  handleSubmit: () => void
+}
+
+const Actions = ({ handleClose, handleSubmit }: ActionsProps) => (
+  <>
+    <Button onClick={handleClose} color="secondary" variant="outlined">
+      Cancel
+    </Button>
+    <Button onClick={handleSubmit} variant="contained">
+      Save changes
+    </Button>
+  </>
+)
+
+export const CustomDialogStory = (args: any) => {
   const [open, setOpen] = useState(false)
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (): void => {
     setOpen(true)
   }
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setOpen(false)
+  }
+
+  const handleSubmit = (): void => {
+    setOpen(false), alert("Submit!")
   }
 
   return (
@@ -50,34 +73,30 @@ export const CustomDialogStory = ({}: Story) => {
       <Button variant="outlined" onClick={handleClickOpen}>
         Open dialog
       </Button>
+
       <CustomDialog
+        {...args} // args を利用してコンポーネントのプロパティを渡す
         open={open}
-        title="Dialog title"
         onClose={handleClose}
-        content={
-          <>
-            {mockContent}
-            {mockContent}
-            {mockContent}
-            {mockContent}
-          </>
-        }
         actions={
-          <>
-            <Button
-              autoFocus
-              color="secondary"
-              variant="outlined"
-              onClick={handleClose}
-            >
-              Cancel
-            </Button>
-            <Button autoFocus variant="contained" onClick={handleClose}>
-              Save changes
-            </Button>
-          </>
+          <Actions handleClose={handleClose} handleSubmit={handleSubmit} />
         }
       />
     </>
   )
 }
+
+CustomDialogStory.args = {
+  title: "Dialog title",
+  IconClose: true,
+  content: (
+    <>
+      {mockContent}
+      {mockContent}
+      {mockContent}
+      {mockContent}
+    </>
+  ),
+}
+
+Default(CustomDialogStory)

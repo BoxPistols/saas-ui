@@ -16,6 +16,7 @@ interface CustomDialogProps {
   content: React.ReactNode
   actions: React.ReactNode
   onClose: () => void
+  IconClose?: boolean
 }
 
 const StyledDialog = styled(Dialog)(({ theme }: { theme: Theme }) => ({
@@ -33,6 +34,7 @@ export const CustomDialog = ({
   content,
   actions,
   onClose,
+  IconClose = true,
 }: CustomDialogProps) => {
   return (
     <StyledDialog
@@ -42,18 +44,20 @@ export const CustomDialog = ({
     >
       <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
         {title}
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: "absolute",
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
+        {IconClose && (
+          <IconButton
+            aria-label="close"
+            onClick={onClose}
+            sx={{
+              position: "absolute",
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        )}
       </DialogTitle>
       <DialogContent dividers>{content}</DialogContent>
       <DialogActions>{actions}</DialogActions>
