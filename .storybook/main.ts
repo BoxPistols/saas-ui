@@ -6,9 +6,10 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
-    "@storybook/addon-a11y",
     // 不要と確定すればremove
     // 'storybook-react-i18next',
+    "@storybook/addon-a11y",
+    "@storybook/addon-mdx-gfm"
   ],
   framework: {
     name: "@storybook/nextjs",
