@@ -420,6 +420,38 @@ export const theme = createTheme({
         },
       },
     },
+    // Tableのスタイル
+    MuiTableRow: {
+      styleOverrides: {
+        head: {
+          background: colorData.grey[300],
+        },
+        root: {
+          transition: 'background-color .2s',
+
+          '&.MuiTableRow-hover:hover': {
+            backgroundColor: colorData.grey[300],
+          },
+        },
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        // FIXME! TableCell
+        root: {
+          // borderBottomColor: colors.alpha.black[10],
+          fontSize: '1rem',
+          padding: '0.75rem 1rem',
+        },
+        head: {
+          // textTransform: 'uppercase',
+          fontSize: '0.8125rem',
+          fontWeight: '700',
+          // color: colors.alpha.black[70],
+        },
+      },
+    },
+
   },
 
   // ======== global settings 全体調整で必要な時に設置 ========
