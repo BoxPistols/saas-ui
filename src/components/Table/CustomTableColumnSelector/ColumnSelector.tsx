@@ -46,7 +46,8 @@ function ColumnSelector<T>({
   }
 
   const handleHideAll = () => {
-    setHiddenColumns(columns.map((column) => column.field))
+    // setHiddenColumns(columns.map((column) => column.field))
+    setHiddenColumns(columns.slice(1).map((column) => column.field))
   }
 
   return (
