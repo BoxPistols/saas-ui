@@ -87,7 +87,7 @@ const CustomTableCellComponent = ({
       ...(ellipsis && ellipsisStyle({ lineClamp })),
       ...cellSx,
     }),
-    [minWidthValue, maxWidthValue, noWrap, ellipsis, lineClamp, cellSx],
+    [minWidthValue, maxWidthValue, noWrap, ellipsis, lineClamp, cellSx]
   )
 
   // Tooltipの条件分岐を更新

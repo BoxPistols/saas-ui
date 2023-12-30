@@ -86,19 +86,19 @@ const rows = [
     'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
     '説明A',
     '住所A',
-    '2021/01/01',
+    '2021/01/01'
   ),
   createData(
     '株式会社B',
     '説明B',
     'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
-    '2021/02/01',
+    '2021/02/01'
   ),
   createData(
     '株式会社C',
     '説明C',
     '住所C',
-    'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
+    'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
   ),
 ]
 export const Default = (args: {
