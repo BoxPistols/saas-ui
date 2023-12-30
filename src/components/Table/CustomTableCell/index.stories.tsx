@@ -136,6 +136,7 @@ export const Default = (args: {
                 minWidth: column.minWidth,
                 maxWidth: column.maxWidth,
               }}
+              sx={{ whiteSpace: 'nowrap' }}
             >
               {column.label}
             </CustomTableCell>
