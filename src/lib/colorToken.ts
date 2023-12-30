@@ -90,6 +90,11 @@ export const colorData = {
     action: amber[400],
     disabled: grey[500],
   },
+  action: {
+    hover: "#f5f5f5",
+    selected: "#e0e0e0",
+    disabled: grey[300],
+  },
 }
 
 /* ===== Examples =====
