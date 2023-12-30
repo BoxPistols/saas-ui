@@ -167,6 +167,11 @@ export const theme = createTheme({
       secondary: colorData.text.secondary,
       disabled: colorData.text.disabled,
     },
+    action: {
+      hover: colorData.action.hover,
+      selected: colorData.action.selected,
+      disabled: colorData.action.disabled,
+    },
 
     divider: colorData.divider,
 

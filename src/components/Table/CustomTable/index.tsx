@@ -1,34 +1,62 @@
+// Table/CustumTable/index.tsx
 import * as React from 'react'
-import Paper from '@mui/material/Paper'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TablePagination from '@mui/material/TablePagination'
-import TableRow from '@mui/material/TableRow'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import { styled } from '@mui/material/styles'
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TableCell,
+  styled,
+} from '@mui/material'
+import { tableCellClasses } from '@mui/material/TableCell'
 
+// StyledTableCell
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  maxHeight: '2.5em',
+  padding: '0.75em 1.25em',
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
+    cursor: 'pointer',
+    fontWeight: 700,
+    paddingLeft: '1.5em',
+    position: 'relative',
+    fontSize: 15,
+    whiteSpace: 'nowrap',
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
+    paddingLeft: '1.75em',
+    borderColor: theme.palette.divider,
+    //hover
+    '&:hover': {
+      backgroundColor: theme.palette.action.hover,
+      cursor: 'pointer',
+      color: theme.palette.primary.light,
+    },
   },
 }))
 
+// StyledTableRow
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
+    cursor: 'pointer',
   },
-  // hide last border
   '&:last-child td, &:last-child th': {
-    border: 0,
+    // border: 0,
   },
 }))
 
+// CustomTable
+interface CustomTableProps {
+  rows: Data[] // Data 型は既に定義されていると仮定
+}
+
+// ここで定義した型を使用する
 interface Column {
   id: 'name' | 'code' | 'population' | 'size' | 'density'
   label: string
@@ -37,6 +65,26 @@ interface Column {
   format?: (value: number) => string
 }
 
+//　Data type
+interface Data {
+  name: string
+  code: string
+  population: number
+  size: number
+  density: number
+}
+// Dataを作成する関数
+function createData(
+  name: string,
+  code: string,
+  population: number,
+  size: number
+): Data {
+  const density = population / size
+  return { name, code, population, size, density }
+}
+
+// mock data
 const columns: readonly Column[] = [
   { id: 'name', label: 'Name', minWidth: 170 },
   { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
@@ -62,25 +110,7 @@ const columns: readonly Column[] = [
     format: (value: number) => value.toFixed(2),
   },
 ]
-
-interface Data {
-  name: string
-  code: string
-  population: number
-  size: number
-  density: number
-}
-
-function createData(
-  name: string,
-  code: string,
-  population: number,
-  size: number
-): Data {
-  const density = population / size
-  return { name, code, population, size, density }
-}
-
+// mock 
 const rows = [
   createData('India', 'IN', 1324171354, 3287263),
   createData('China', 'CN', 1403500365, 9596961),
@@ -98,6 +128,7 @@ const rows = [
   createData('Nigeria', 'NG', 200962417, 923768),
   createData('Brazil', 'BR', 210147125, 8515767),
 ]
+
 
 export default function StickyHeadTable() {
   const [page, setPage] = React.useState(0)
