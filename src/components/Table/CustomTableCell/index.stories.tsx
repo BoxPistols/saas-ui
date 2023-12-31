@@ -10,6 +10,7 @@ import { CustomTableRow } from '@/components/Table/CustomTableRow'
 const meta: Meta<typeof CustomTable> = {
   title: 'Component/Table/CustomTableCell',
   component: CustomTable,
+  tags: ['autodocs'],
   argTypes: {
     minWidthValue: {
       control: 'number',
