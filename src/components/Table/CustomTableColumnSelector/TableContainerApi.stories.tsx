@@ -6,6 +6,20 @@ import { TableColumn } from './Types'
 export default {
   title: 'Component/Table/TableContainerApi',
   component: TableContainerApi,
+  tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `TableContainerApiは、APIからデータを非同期で取得したテーブル表示に、カラムの表示・非表示を設定する機能を追加したコンポーネントです。`,
+      },
+    },
+  },
+  argTypes: {
+    currentPage: {
+      control: { type: 'number', min: 1 },
+      defaultValue: 1,
+    },
+  },
 }
 
 // 実際のデータに基づいてカラムを動的に生成する関数
@@ -20,7 +34,7 @@ const createColumnsFromData = (data: any[]) => {
   }))
 }
 
-export const Default = () => {
+export const Default = (args) => {
   const [columns, setColumns] = useState<TableColumn<any>[]>([])
 
   useEffect(() => {
@@ -38,6 +52,7 @@ export const Default = () => {
     <TableContainerApi<any>
       fetchUrl="https://dummyjson.com/products"
       initialColumns={columns}
+      {...args}
     />
   )
 }
