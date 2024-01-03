@@ -10,6 +10,14 @@ import {
   TableSortLabel,
 } from '@mui/material'
 
+
+
+import { CustomTable } from '@/components/Table/CustomTable'
+import { CustomTableCell } from '@/components/Table/CustomTableCell'
+import { CustomTableContainer } from '@/components/Table/CustomTableContainer'
+import { CustomTableHeader } from '@/components/Table/CustomTableHeader'
+import { CustomTableRow } from '@/components/Table/CustomTableRow'
+
 export default {
   title: 'Component/Table/SortFilter',
   component: Table,
@@ -56,11 +64,11 @@ export function Default() {
   })
 
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
+    <CustomTableContainer>
+      <CustomTable>
+        <CustomTableHeader>
           {columns.map(column => (
-            <TableCell key={column.field}>
+            <CustomTableCell key={column.field}>
               <TableSortLabel
                 active={sortField === column.field}
                 direction={sortField === column.field ? sortDirection : 'asc'}
@@ -68,30 +76,30 @@ export function Default() {
               >
                 {column.headerName}
               </TableSortLabel>
-            </TableCell>
+            </CustomTableCell>
           ))}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {sortedData.map((product, index) => (
-          <TableRow key={index}>
-            {columns.map(column => (
-              <TableCell key={column.field}>
-                {column.field === 'thumbnail' ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={product[column.field]}
-                    alt={product['title']}
-                    style={{ width: '50px' }}
-                  />
-                ) : (
-                  product[column.field]
-                )}
-              </TableCell>
-            ))}
-          </TableRow>
-        ))}
+        </CustomTableHeader>
+        <TableBody>
+          {sortedData.map((product, index) => (
+            <CustomTableRow key={index}>
+              {columns.map(column => (
+                <CustomTableCell key={column.field}>
+                  {column.field === 'thumbnail' ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={product[column.field]}
+                      alt={product['title']}
+                      style={{ width: '50px' }}
+                    />
+                  ) : (
+                    product[column.field]
+                  )}
+                </CustomTableCell>
+              ))}
+            </CustomTableRow>
+          ))}
       </TableBody>
-    </Table>
+      </CustomTable>
+    </CustomTableContainer>    
   )
 }
