@@ -34,7 +34,8 @@ const createColumnsFromData = (data: any[]) => {
   }))
 }
 
-export const Default = (args) => {
+// @ts-ignore
+export const Default = () => {
   const [columns, setColumns] = useState<TableColumn<any>[]>([])
 
   useEffect(() => {
@@ -52,7 +53,7 @@ export const Default = (args) => {
     <TableContainerApi<any>
       fetchUrl="https://dummyjson.com/products"
       initialColumns={columns}
-      {...args}
+      // {...args}
     />
   )
 }

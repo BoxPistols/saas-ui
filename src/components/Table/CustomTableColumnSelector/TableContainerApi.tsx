@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import GenericTable from './GenericTable';
 import ColumnSelector from './ColumnSelector';
-import { TableColumn, Pagination } from '@mui/material';
+import { TableColumn } from './Types';
+import { Pagination } from '@mui/material';
 
 type TableContainerApiProps<T> = {
   fetchUrl: string; // APIのURL

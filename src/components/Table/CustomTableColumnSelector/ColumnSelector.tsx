@@ -8,6 +8,7 @@ import {
   MenuItem,
   Switch,
   FormControlLabel,
+  IconButton,
 } from '@mui/material'
 import ToggleOnOutlinedIcon from '@mui/icons-material/ToggleOnOutlined'
 import { TableColumn } from './Types'
@@ -53,21 +54,26 @@ function ColumnSelector<T>({
   return (
     <Box
       sx={{
-        display: 'flex',
-        justifyContent: 'flex-end',
+        display: "flex",
+        justifyContent: "flex-end",
       }}
     >
-      <ToggleOnOutlinedIcon
-        color="primary"
-        aria-controls="column-selector"
+      <IconButton
+        color="primary"        aria-controls="column-selector"
         aria-haspopup="true"
         onClick={handleMenuClick}
         sx={{
-          cursor: 'pointer',
-          width: 40,
-          height: '100%',
+          cursor: "pointer",
         }}
-      />
+      >
+        <ToggleOnOutlinedIcon fontSize="large" 
+        sx={{
+          "&.MuiSvgIcon-root": {
+            fontSize: "3rem",
+          },
+        }}
+        />
+      </IconButton>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
@@ -86,14 +92,35 @@ function ColumnSelector<T>({
             />
           </MenuItem>
         ))}
-        <Stack spacing={1} direction="row" padding={2}>
-          <Button onClick={handleShowAll}>全て表示</Button>
-          <Button onClick={handleHideAll}>全て非表示</Button>
-          <Button onClick={handleMenuClose}>閉じる</Button>
+        <Stack
+          spacing={1}
+          direction="row"
+          padding={2}
+          position={"sticky"}
+          bottom={0}
+          left={0}
+          sx={{
+            backgroundColor: `common.white`,
+          }}
+        >
+          <Button onClick={handleShowAll} size="small" variant="contained">
+            全て表示
+          </Button>
+          <Button onClick={handleHideAll} size="small" variant="outlined">
+            全て非表示
+          </Button>
+          <Button
+            onClick={handleMenuClose}
+            size="small"
+            variant="text"
+            color="secondary"
+          >
+            閉じる
+          </Button>
         </Stack>
       </Menu>
     </Box>
-  )
+  );
 }
 
 export default ColumnSelector

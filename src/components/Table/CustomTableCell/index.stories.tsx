@@ -78,7 +78,12 @@ const columns = [
 ]
 
 // データ生成関数
-const createData = (name, info, address, date) => {
+const createData = (
+  name: string,
+  info: string,
+  address: string,
+  date: string
+) => {
   return { name, info, address, date }
 }
 // テストデータ
@@ -149,14 +154,14 @@ export const Default = (args: {
               {columns.map((column) => (
                 <CustomTableCell
                   key={column.id}
-                  align={args.align}
+                  // align={column.align}
                   style={{
                     minWidth: column.minWidth,
                     maxWidth: column.maxWidth,
                   }}
                   {...args}
                 >
-                  {row[column.id]}
+                  {row[column.id as keyof typeof row]}
                 </CustomTableCell>
               ))}
             </CustomTableRow>
