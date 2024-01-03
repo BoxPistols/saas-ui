@@ -82,7 +82,7 @@ const createData = (
   name: string,
   info: string,
   address: string,
-  date: string
+  date: string,
 ) => {
   return { name, info, address, date }
 }
@@ -92,19 +92,19 @@ const rows = [
     'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
     '説明A',
     '住所A',
-    '2021/01/01'
+    '2021/01/01',
   ),
   createData(
     '株式会社B',
     '説明B',
     'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
-    '2021/02/01'
+    '2021/02/01',
   ),
   createData(
     '株式会社C',
     '説明C',
     '住所C',
-    'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
+    'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco',
   ),
 ]
 export const Default = (args: {
@@ -135,7 +135,7 @@ export const Default = (args: {
     <CustomTableContainer>
       <CustomTable>
         <CustomTableHeader>
-          {columns.map((column) => (
+          {columns.map(column => (
             <CustomTableCell
               key={column.id}
               style={{
@@ -151,7 +151,7 @@ export const Default = (args: {
         <TableBody>
           {rows.map((row, index) => (
             <CustomTableRow key={index}>
-              {columns.map((column) => (
+              {columns.map(column => (
                 <CustomTableCell
                   key={column.id}
                   // align={column.align}

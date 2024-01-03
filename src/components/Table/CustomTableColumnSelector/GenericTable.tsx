@@ -16,24 +16,24 @@ function GenericTable<T>({ data, columns, hiddenColumns = [] }: TableProps<T>) {
       <CustomTable>
         <CustomTableHeader>
           {columns.map(
-            (column) =>
+            column =>
               !hiddenColumns.includes(column.field) && (
                 <CustomTableCell key={column.field as string}>
                   {column.headerName}
                 </CustomTableCell>
-              )
+              ),
           )}
         </CustomTableHeader>
         <TableBody>
           {data.map((row, rowIndex) => (
             <CustomTableRow key={rowIndex}>
               {columns.map(
-                (column) =>
+                column =>
                   !hiddenColumns.includes(column.field) && (
                     <CustomTableCell key={column.field as string}>
                       {row[column.field] as React.ReactNode}
                     </CustomTableCell>
-                  )
+                  ),
               )}
             </CustomTableRow>
           ))}

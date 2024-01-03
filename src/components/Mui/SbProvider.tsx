@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react"
-import { ThemeProvider } from "@mui/material/styles"
-import { theme } from "../../lib/theme"
+import React, { ReactNode } from 'react'
+import { ThemeProvider } from '@mui/material/styles'
+import { theme } from '../../lib/theme'
 
 interface SbProviderProps {
   children: ReactNode

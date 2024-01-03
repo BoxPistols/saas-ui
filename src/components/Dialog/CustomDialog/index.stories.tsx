@@ -1,22 +1,22 @@
-import { Meta, StoryObj } from "@storybook/react"
-import { ComponentProps, useState } from "react"
-import { Typography, Button } from "@mui/material"
-import { CustomDialog } from "."
-import { Default } from "@/stories/theme/ResponsiveGrid.stories"
+import { Meta, StoryObj } from '@storybook/react'
+import { ComponentProps, useState } from 'react'
+import { Typography, Button } from '@mui/material'
+import { CustomDialog } from '.'
+import { Default } from '@/stories/theme/ResponsiveGrid.stories'
 
 type Story = StoryObj<typeof CustomDialog>
 type CustomDialogStoryProps = ComponentProps<typeof CustomDialog>
 
 export default {
-  title: "Component/CustomDialog",
+  title: 'Component/CustomDialog',
   component: CustomDialog,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   argTypes: {
-    open: { control: "boolean" },
-    title: { control: "text" },
-    content: { control: "text" },
-    actions: { control: "text" },
-    IconClose: { control: "boolean" }, // IconClose のためのコントローラを追加
+    open: { control: 'boolean' },
+    title: { control: 'text' },
+    content: { control: 'text' },
+    actions: { control: 'text' },
+    IconClose: { control: 'boolean' }, // IconClose のためのコントローラを追加
   },
 } as Meta
 
@@ -65,7 +65,7 @@ export const CustomDialogStory = (args: any) => {
   }
 
   const handleSubmit = (): void => {
-    setOpen(false), alert("Submit!")
+    setOpen(false), alert('Submit!')
   }
 
   return (
@@ -87,7 +87,7 @@ export const CustomDialogStory = (args: any) => {
 }
 
 CustomDialogStory.args = {
-  title: "Dialog title",
+  title: 'Dialog title',
   IconClose: true,
   content: (
     <>

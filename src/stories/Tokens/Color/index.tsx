@@ -1,11 +1,11 @@
-import { styled, useTheme } from '@mui/material/styles';
-import { Grid, Box, Typography, Container } from '@mui/material';
-import { Palette, PaletteColor, CommonColors } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles'
+import { Grid, Box, Typography, Container } from '@mui/material'
+import { Palette, PaletteColor, CommonColors } from '@mui/material/styles'
 
 const TextStyled = styled(Typography)`
   font-size: 14px;
   font-weight: 500;
-`;
+`
 
 const BoxStyled = styled(Box)`
   width: fit-content;
@@ -15,36 +15,36 @@ const BoxStyled = styled(Box)`
   padding: 10px;
   border-radius: 5px;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.25);
-`;
+`
 
 const Color = () => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   // colorGroups は文字列の配列です
   const colorGroups = Object.keys(theme.palette).filter(
-    (key) =>
+    key =>
       // オブジェクトとしてパレットに含まれている色のみをフィルタリングします
       // ..."object" && key !== "grey" グレーは除外するケース
-      typeof theme.palette[key as keyof Palette] === 'object' && key
-  );
+      typeof theme.palette[key as keyof Palette] === 'object' && key,
+  )
 
   // 文字の色は背景色に応じて黒または白になります。
   const getContrastTextColor = (color: PaletteColor | string): string => {
     // パレットの色はオブジェクトまたはmainプロパティを持つ文字列です
     // if (typeof color === "object" && "main" in color) {
     if (typeof color === 'object') {
-      return theme.palette.getContrastText(color.main);
+      return theme.palette.getContrastText(color.main)
     } else if (typeof color === 'string') {
-      return theme.palette.getContrastText(color);
+      return theme.palette.getContrastText(color)
     } else {
-      return theme.palette.text.primary;
+      return theme.palette.text.primary
     }
-  };
+  }
 
   return (
     <>
-      <Container maxWidth='lg'>
-        {colorGroups.map((colorGroup) => (
+      <Container maxWidth="lg">
+        {colorGroups.map(colorGroup => (
           <Box key={colorGroup}>
             <Typography
               mt={2}
@@ -61,12 +61,12 @@ const Color = () => {
               {Object.keys(
                 theme.palette[colorGroup as keyof Palette] as
                   | PaletteColor
-                  | CommonColors
+                  | CommonColors,
               ).map((shade: string) => {
                 const color =
                   theme.palette[colorGroup as keyof Palette]?.[
                     shade as keyof (PaletteColor | CommonColors)
-                  ];
+                  ]
 
                 return (
                   <Grid item key={shade}>
@@ -98,7 +98,7 @@ const Color = () => {
                       </Box>
                     ) : null}
                   </Grid>
-                );
+                )
               })}
             </Grid>
           </Box>
@@ -113,7 +113,7 @@ const Color = () => {
         >
           palette others
         </Typography>
-        <Box display='flex' gap={2}>
+        <Box display="flex" gap={2}>
           <BoxStyled
             style={{
               backgroundColor: theme.palette.divider,
@@ -150,7 +150,7 @@ const Color = () => {
         >
           palette surfaceBackground
         </Typography>
-        <Box display='flex' gap={2}>
+        <Box display="flex" gap={2}>
           <BoxStyled
             style={{
               backgroundColor: theme.palette.surfaceBackground,
@@ -193,7 +193,7 @@ const Color = () => {
         >
           icon palette
         </Typography>
-        <Box display='flex' gap={2}>
+        <Box display="flex" gap={2}>
           {/* //  iconLight: colorData.icon.light, iconDark: colorData.icon.dark,
           iconAction: colorData.icon.action, iconDisabled: colorData.icon.disabled, */}
           <BoxStyled
@@ -246,7 +246,7 @@ const Color = () => {
         </Box>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default Color;
+export default Color

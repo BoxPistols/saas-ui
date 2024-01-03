@@ -1,13 +1,16 @@
-import { Box, Toolbar, Typography, IconButton } from "@mui/material"
+import { Box, Toolbar, Typography, IconButton } from '@mui/material'
 
-import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon } from "@mui/icons-material"
+import {
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+} from '@mui/icons-material'
 
-import { AppBar } from "./AppBarUtil"
-import { AppBarSideNav } from "./AppBarSideNav"
+import { AppBar } from './AppBarUtil'
+import { AppBarSideNav } from './AppBarSideNav'
 
-import { theme } from "../lib/theme"
-import { ReactNode, useState } from "react"
-import Link from "next/link"
+import { theme } from '../lib/theme'
+import { ReactNode, useState } from 'react'
+import Link from 'next/link'
 
 // Type
 type Props = {
@@ -22,13 +25,23 @@ export const AppBarHeader = ({ children }: Props) => {
   }
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: 'flex' }}>
       <AppBar position="fixed">
         <Toolbar>
-          <IconButton color="inherit" aria-label="toggle drawer" onClick={handleDrawerOpen} edge="start">
+          <IconButton
+            color="inherit"
+            aria-label="toggle drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+          >
             {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
-          <Typography variant="h6" noWrap component="div" color={theme.palette.primary.contrastText}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            color={theme.palette.primary.contrastText}
+          >
             <Link href="/">App AgNextMui Dashboard</Link>
           </Typography>
         </Toolbar>

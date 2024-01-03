@@ -1,7 +1,7 @@
-import Head from "next/head"
-import ChartBar from "@/components/Chart/ChartBar"
-import Typography from "@mui/material/Typography"
-import styles from "../styles/Home.module.css"
+import Head from 'next/head'
+import ChartBar from '@/components/Chart/ChartBar'
+import Typography from '@mui/material/Typography'
+import styles from '../styles/Home.module.css'
 
 const App = () => {
   return (

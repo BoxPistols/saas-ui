@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react'
 import {
   styled,
   Dialog,
@@ -6,9 +6,9 @@ import {
   DialogContent,
   DialogActions,
   IconButton,
-} from "@mui/material"
-import CloseIcon from "@mui/icons-material/Close"
-import { Theme } from "@mui/material/styles"
+} from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import { Theme } from '@mui/material/styles'
 
 interface CustomDialogProps {
   open: boolean
@@ -20,10 +20,10 @@ interface CustomDialogProps {
 }
 
 const StyledDialog = styled(Dialog)(({ theme }: { theme: Theme }) => ({
-  "& .MuiDialogContent-root": {
+  '& .MuiDialogContent-root': {
     padding: theme.spacing(2),
   },
-  "& .MuiDialogActions-root": {
+  '& .MuiDialogActions-root': {
     padding: theme.spacing(1),
   },
 }))
@@ -49,10 +49,10 @@ export const CustomDialog = ({
             aria-label="close"
             onClick={onClose}
             sx={{
-              position: "absolute",
+              position: 'absolute',
               right: 8,
               top: 8,
-              color: (theme) => theme.palette.grey[500],
+              color: theme => theme.palette.grey[500],
             }}
           >
             <CloseIcon />

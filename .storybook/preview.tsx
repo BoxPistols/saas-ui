@@ -1,11 +1,10 @@
-import React from "react"
-import { Preview } from "@storybook/react"
-import { ThemeProvider } from "@mui/system"
-import { CssBaseline } from "@mui/material"
-import { theme } from "../src/lib/theme"
+import React from 'react'
+import { Preview } from '@storybook/react'
+import { ThemeProvider } from '@mui/system'
+import { CssBaseline } from '@mui/material'
+import { theme } from '../src/lib/theme'
 // import { I18nextProvider } from "react-i18next"
 // import i18n from "../src/lib/i18n"
-
 
 // TOD0: lang
 // export const globalTypes = {
@@ -23,64 +22,64 @@ import { theme } from "../src/lib/theme"
 //   },
 // }
 
-import { MINIMAL_VIEWPORTS } from "@storybook/addon-viewport"
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 // ViewSize
 const customViewports = {
   iphone: {
-    name: "iPhone",
+    name: 'iPhone',
     styles: {
-      width: "375px",
-      height: "667px",
+      width: '375px',
+      height: '667px',
     },
   },
   ipad: {
-    name: "iPad",
+    name: 'iPad',
     styles: {
-      width: "768px",
-      height: "1024px",
+      width: '768px',
+      height: '1024px',
     },
   },
   surface: {
-    name: "Surface",
+    name: 'Surface',
     styles: {
-      width: "800px",
-      height: "1280px",
+      width: '800px',
+      height: '1280px',
     },
   },
   macbookPro: {
-    name: "MacBook Pro",
+    name: 'MacBook Pro',
     styles: {
-      width: "1440px",
-      height: "900px",
+      width: '1440px',
+      height: '900px',
     },
   },
   imac: {
-    name: "iMac",
+    name: 'iMac',
     styles: {
-      width: "2560px",
-      height: "1440px",
+      width: '2560px',
+      height: '1440px',
     },
   },
   desktop24inch: {
-    name: "Desktop 24inch",
+    name: 'Desktop 24inch',
     styles: {
-      width: "1920px",
-      height: "1080px",
+      width: '1920px',
+      height: '1080px',
     },
   },
   desktop27inch: {
-    name: "Desktop 27inch",
+    name: 'Desktop 27inch',
     styles: {
-      width: "2560px",
-      height: "1440px",
+      width: '2560px',
+      height: '1440px',
     },
   },
   desktop32inch: {
-    name: "Desktop 32inch",
+    name: 'Desktop 32inch',
     styles: {
-      width: "3840px",
-      height: "2160px",
+      width: '3840px',
+      height: '2160px',
     },
   },
 }
@@ -93,7 +92,7 @@ const preview: Preview = {
         ...customViewports,
       },
     },
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -102,12 +101,12 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ["Tokens", "Stories", "Mui"],
+        order: ['Tokens', 'Stories', 'Mui'],
       },
     },
   },
   decorators: [
-    (Story) => (
+    Story => (
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Story />

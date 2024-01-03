@@ -1,10 +1,10 @@
-import React, { Suspense } from "react"
-import { Meta } from "@storybook/react"
-const IconList = React.lazy(() => import("."))
+import React, { Suspense } from 'react'
+import { Meta } from '@storybook/react'
+const IconList = React.lazy(() => import('.'))
 // import IconList from "."
 
 const meta: Meta<typeof IconList> = {
-  title: "Mui/Icon",
+  title: 'Mui/Icon',
   component: IconList,
   argTypes: {},
 }

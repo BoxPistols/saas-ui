@@ -28,7 +28,7 @@ const createColumnsFromData = (data: any[]) => {
 
   // データの最初の要素からフィールドを抽出してカラムを生成
   const fields = Object.keys(data[0])
-  return fields.map((field) => ({
+  return fields.map(field => ({
     field: field,
     headerName: field.charAt(0).toUpperCase() + field.slice(1),
   }))
@@ -41,12 +41,12 @@ export const Default = () => {
   useEffect(() => {
     // データを取得してカラムを設定
     fetch('https://dummyjson.com/products')
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         const newColumns = createColumnsFromData(data.products)
         setColumns(newColumns)
       })
-      .catch((error) => console.error('Error fetching data:', error))
+      .catch(error => console.error('Error fetching data:', error))
   }, [])
 
   return (

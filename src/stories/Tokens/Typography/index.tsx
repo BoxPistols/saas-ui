@@ -1,49 +1,49 @@
 // src/stories/Tokens/Typography/index.tsx
-import { styled, useTheme } from '@mui/material/styles';
-import { Divider, Typography, Box, Container, Button } from '@mui/material';
-import { indigo } from '@mui/material/colors';
-const display = indigo[200];
-const noteText = indigo[600];
-const displayTitle = indigo[900];
+import { styled, useTheme } from '@mui/material/styles'
+import { Divider, Typography, Box, Container, Button } from '@mui/material'
+import { indigo } from '@mui/material/colors'
+const display = indigo[200]
+const noteText = indigo[600]
+const displayTitle = indigo[900]
 
-const sampleText = '日本語ひらがなカタカナ123abcABC@*^¥';
+const sampleText = '日本語ひらがなカタカナ123abcABC@*^¥'
 
 const TextStyledDisplay = styled(Typography)`
   font-weight: bold;
   color: ${display};
   font-size: 24px;
   margin-bottom: 16px;
-`;
+`
 
 const TextStyledVariant = styled(Typography)`
   font-size: 16px;
   font-weight: bold;
   color: ${displayTitle};
-`;
+`
 
 const TextStyledSmall = styled(Typography)`
   font-size: 12px;
   font-weight: bold;
   color: ${noteText};
   margin: 2px 4px 2px 10px;
-`;
+`
 
 const TextStyledSample = styled(Typography)`
   margin-bottom: 2px;
   border-left: 2px solid ${display};
   padding: 2px 8px;
   margin: 4px 4px 4px 10px;
-`;
+`
 
 const TextStyledNote = styled(Typography)`
   font-size: 14px;
   color: ${noteText};
   margin-bottom: 16px;
   margin: 8px 4px 4px 10px;
-`;
+`
 
 const Typographies = () => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   const typographyVariantsHeading = [
     {
@@ -70,7 +70,7 @@ const Typographies = () => {
       variant: 'h6',
       note: '小見出し用途。sm + boldと同じです',
     },
-  ];
+  ]
 
   const typographyVariants = [
     {
@@ -105,7 +105,7 @@ const Typographies = () => {
       variant: 'inherit',
       note: 'inheritなので、親要素のフォントサイズを継承します。親要素のフォントサイズを変更する場合は、このvariantを指定します',
     },
-  ];
+  ]
 
   // 拡張variant
   const typographyVariantsExtended = [
@@ -145,72 +145,72 @@ const Typographies = () => {
       variant: 'xxxs',
       note: '非推奨ですが、ブラウザ対応の最小サイズです。*もしユーザーがブラウザの最小フォントサイズを変更している場合は、ユーザー指定の最小フォントサイズ（12pxなど）になります',
     },
-  ];
+  ]
 
-  type TypographyVariant = keyof typeof theme.typography;
+  type TypographyVariant = keyof typeof theme.typography
 
   // フォントサイズとline-heightを取得するためのヘルパー関数
   const getTypographyStyle = (variant: TypographyVariant) => {
-    const style = theme.typography[variant] as any;
-    const fontSizeRem = style.fontSize;
-    const lineHeight = style.lineHeight;
+    const style = theme.typography[variant] as any
+    const fontSizeRem = style.fontSize
+    const lineHeight = style.lineHeight
     // Parse float value from rem string and convert to px
-    const fontSizeRemValue = parseFloat(fontSizeRem);
+    const fontSizeRemValue = parseFloat(fontSizeRem)
     const fontSizePx = (
       fontSizeRemValue * theme.typography.htmlFontSize
-    ).toFixed(0);
-    const fontSize = `${fontSizeRem} (${fontSizePx}px相当)`;
-    return `font-size: ${fontSize}, line-height: ${lineHeight}`;
-  };
+    ).toFixed(0)
+    const fontSize = `${fontSizeRem} (${fontSizePx}px相当)`
+    return `font-size: ${fontSize}, line-height: ${lineHeight}`
+  }
 
   //ページ内リンク用
   function handleClick(id: string) {
     return (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault();
-      const element = document.getElementById(id);
+      event.preventDefault()
+      const element = document.getElementById(id)
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: 'smooth' })
       }
-    };
+    }
   }
 
   return (
     <>
-      <Container sx={{ p: 1, m: 1 }} id='top'>
-        <Typography variant='h1'>Typography variants</Typography>
-        <Typography variant='subtitle1' mb={1}>
+      <Container sx={{ p: 1, m: 1 }} id="top">
+        <Typography variant="h1">Typography variants</Typography>
+        <Typography variant="subtitle1" mb={1}>
           現在のhtml基準フォントサイズ:
           <b style={{ color: 'tomato' }}>{theme.typography.fontSize}px</b>
         </Typography>
         {/* // 各TextStyledDisplayにパージ内リンクを設定 */}
         <Button
-          variant='outlined'
-          size='small'
+          variant="outlined"
+          size="small"
           onClick={handleClick('heading')}
         >
           Heading
         </Button>
         <Button
-          variant='outlined'
-          size='small'
+          variant="outlined"
+          size="small"
           sx={{ m: 1 }}
           onClick={handleClick('util')}
         >
           body + util
         </Button>
         <Button
-          variant='outlined'
-          size='small'
+          variant="outlined"
+          size="small"
           onClick={handleClick('extended')}
         >
           Extended
         </Button>
 
         <>
-          <TextStyledDisplay id='heading' mt={2}>
+          <TextStyledDisplay id="heading" mt={2}>
             Heading
           </TextStyledDisplay>
-          <Typography variant='body2' mb={2}>
+          <Typography variant="body2" mb={2}>
             Mui 見出し / h1以外は <code>{"variant='h(x)'"}</code>
             で見出しデザインを持った<code>div</code>
             となるため、マークアップ構造自体は気にしなくて良い仕組みです。
@@ -230,14 +230,14 @@ const Typographies = () => {
             </Box>
           ))}
         </>
-        <Button variant='outlined' size='small' onClick={handleClick('top')}>
+        <Button variant="outlined" size="small" onClick={handleClick('top')}>
           To Top
         </Button>
         <Divider sx={{ my: 3 }} />
         {/* 本文 */}
         <>
-          <TextStyledDisplay id='util'>body + util</TextStyledDisplay>
-          <Typography variant='body2'>
+          <TextStyledDisplay id="util">body + util</TextStyledDisplay>
+          <Typography variant="body2">
             Mui 本文 / 見出しの下に使うサブタイトル / ユーティリティテキスト
             <br />
             <code>{"variant='body1'"}</code>はデフォルトとなり、何も指定しない
@@ -248,7 +248,7 @@ const Typographies = () => {
             <span>{theme.typography.fontSize}px</span>
             を指定しているため、これが基準（1rem）となります。
           </Typography>
-          <Typography variant='body2' mb={2}>
+          <Typography variant="body2" mb={2}>
             要素対応リスト:
             <code>
               {`body1: 'p', body2: 'p', subtitle1: 'p', subtitle2: 'p', overline:'span', caption: 'span', button: 'p',`}
@@ -267,19 +267,19 @@ const Typographies = () => {
             </Box>
           ))}
         </>
-        <Button variant='outlined' size='small' onClick={handleClick('top')}>
+        <Button variant="outlined" size="small" onClick={handleClick('top')}>
           To Top
         </Button>
         <Divider sx={{ my: 3 }} />
         {/* 拡張variant */}
         <>
-          <TextStyledDisplay id='extended'>Extended variant</TextStyledDisplay>
-          <Typography variant='body2'>
+          <TextStyledDisplay id="extended">Extended variant</TextStyledDisplay>
+          <Typography variant="body2">
             これはMuiから拡張した独自variantです。
             <br />
             抽象化されたvariantを使うことで、マークアップ構造を気にせずに汎用的なテキストを作成できます。
           </Typography>
-          <Typography variant='body2' mb={2}>
+          <Typography variant="body2" mb={2}>
             要素対応リスト:
             <code>{`xxl: 'div', xl: 'div', lg: 'div', ml: 'p', md: 'p', sm: 'p', xs: 'p', xxs: 'span', xxxs: 'span'`}</code>
           </Typography>
@@ -297,13 +297,13 @@ const Typographies = () => {
             </Box>
           ))}
         </>
-        <Button variant='outlined' size='small' onClick={handleClick('top')}>
+        <Button variant="outlined" size="small" onClick={handleClick('top')}>
           To Top
         </Button>
         <Divider sx={{ my: 3 }} />
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default Typographies;
+export default Typographies

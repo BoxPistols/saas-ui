@@ -1,21 +1,24 @@
 version: '3.8'
 services:
   app:
-    build: .
+    # これはコンテナ名
+    build: . # Dockerfileがあるディレクトリを指定
     ports:
+      # ポートのマッピング
       - '3333:3000' # ローカルホストのポート3333をコンテナのポート3000にマッピング
     volumes:
-      - .:/usr/src/app
+      # ボリュームのマッピング
+      - .:/usr/src/app # ローカルのカレントディレクトリをコンテナの/usr/src/appにマッピング
       - /usr/src/app/node_modules
-    environment:
-      - NODE_ENV=development
-    command: yarn dev
+    environment: # 環境変数
+      - NODE_ENV=development # 開発環境
+    command: yarn dev # コンテナ起動時に実行するコマンド
 
-  storybook:
-    build: .
-    ports:
-      - '6666:6006' # ローカルホストのポート6666をコンテナのポート6006にマッピング
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    command: yarn storybook
+  storybook: # コンテナ名
+    build: . # Dockerfileがあるディレクトリを指定
+    ports: # ポートのマッピング
+      - '6007:6006' # ローカルホストのポート6007をコンテナのポート6006にマッピング
+    volumes: # ボリュームのマッピング
+      - .:/usr/src/app # ローカルのカレントディレクトリをコンテナの/usr/src/appにマッピング
+      - /usr/src/app/node_modules # コンテナのnode_modulesをボリュームとしてマウント
+    command: yarn storybook # コンテナ起動時に実行するコマンド

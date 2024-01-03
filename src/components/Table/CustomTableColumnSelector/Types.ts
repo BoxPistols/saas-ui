@@ -10,4 +10,3 @@ export type TableProps<T> = {
   columns: TableColumn<T>[]
   hiddenColumns?: (keyof T)[]
 }
-

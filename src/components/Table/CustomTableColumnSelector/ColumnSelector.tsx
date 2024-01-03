@@ -35,10 +35,10 @@ function ColumnSelector<T>({
   }
 
   const toggleColumnVisibility = (field: keyof T) => {
-    setHiddenColumns((current) =>
+    setHiddenColumns(current =>
       current.includes(field)
-        ? current.filter((f) => f !== field)
-        : [...current, field]
+        ? current.filter(f => f !== field)
+        : [...current, field],
     )
   }
 
@@ -48,30 +48,31 @@ function ColumnSelector<T>({
 
   const handleHideAll = () => {
     // setHiddenColumns(columns.map((column) => column.field))
-    setHiddenColumns(columns.slice(1).map((column) => column.field))
+    setHiddenColumns(columns.slice(1).map(column => column.field))
   }
 
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "flex-end",
+        display: 'flex',
+        justifyContent: 'flex-end',
       }}
     >
       <IconButton
-        color="primary"        aria-controls="column-selector"
+        color="primary"
+        aria-controls="column-selector"
         aria-haspopup="true"
         onClick={handleMenuClick}
         sx={{
-          cursor: "pointer",
+          cursor: 'pointer',
         }}
       >
-        <ToggleOnOutlinedIcon fontSize="large" 
-        sx={{
-          "&.MuiSvgIcon-root": {
-            fontSize: "3rem",
-          },
-        }}
+        <ToggleOnOutlinedIcon
+          sx={{
+            '&.MuiSvgIcon-root': {
+              fontSize: '2.6rem',
+            },
+          }}
         />
       </IconButton>
       <Menu
@@ -79,7 +80,7 @@ function ColumnSelector<T>({
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
       >
-        {columns.map((column) => (
+        {columns.map(column => (
           <MenuItem key={column.field as string}>
             <FormControlLabel
               control={
@@ -96,7 +97,7 @@ function ColumnSelector<T>({
           spacing={1}
           direction="row"
           padding={2}
-          position={"sticky"}
+          position={'sticky'}
           bottom={0}
           left={0}
           sx={{
@@ -120,7 +121,7 @@ function ColumnSelector<T>({
         </Stack>
       </Menu>
     </Box>
-  );
+  )
 }
 
 export default ColumnSelector

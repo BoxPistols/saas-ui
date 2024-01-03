@@ -1,11 +1,11 @@
-import { Box, Button } from "@mui/material";
-import { CancelButton } from "./CancelButton";
+import { Box, Button } from '@mui/material'
+import { CancelButton } from './CancelButton'
 
 type Props = {
-  cancelText: string;
-  submitText: string;
-  type?: "submit" | "reset" | "button";
-};
+  cancelText: string
+  submitText: string
+  type?: 'submit' | 'reset' | 'button'
+}
 
 export const ButtonSet = ({
   cancelText,
@@ -16,9 +16,9 @@ export const ButtonSet = ({
   return (
     <Box display="flex" gap={1}>
       <CancelButton>{cancelText}</CancelButton>
-      <Button type={type ? type : "submit"} {...props}>
+      <Button type={type ? type : 'submit'} {...props}>
         {submitText}
       </Button>
     </Box>
-  );
-};
+  )
+}

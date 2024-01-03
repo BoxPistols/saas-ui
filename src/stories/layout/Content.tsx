@@ -19,9 +19,9 @@ const ContentContainer = styled(Container)`
 const Content = ({
   numberOfCards,
   numberOfColumns,
-  // columnDefs,
-  // rowData,
-}: ContentProps) => {
+}: // columnDefs,
+// rowData,
+ContentProps) => {
   return (
     <ContentContainer>
       <Typography variant="h4" component="h2" gutterBottom>

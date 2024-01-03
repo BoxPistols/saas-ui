@@ -1,41 +1,41 @@
-import type { Meta } from "@storybook/react";
-import { TextField, Box, Typography } from "@mui/material";
-import type { TextFieldProps } from "@mui/material/TextField";
+import type { Meta } from '@storybook/react'
+import { TextField, Box, Typography } from '@mui/material'
+import type { TextFieldProps } from '@mui/material/TextField'
 
 const meta: Meta<typeof TextField> = {
-  title: "Mui/Form/TextField",
+  title: 'Mui/Form/TextField',
   component: TextField,
   // tags: ["autodocs"],
   argTypes: {
     variant: {
       control: {
-        type: "select",
-        options: ["outlined", "filled", "standard"],
+        type: 'select',
+        options: ['outlined', 'filled', 'standard'],
       },
-      defaultValue: "outlined",
+      defaultValue: 'outlined',
     },
     size: {
       control: {
-        type: "select",
-        options: ["small", "medium"],
+        type: 'select',
+        options: ['small', 'medium'],
       },
     },
     label: {
       control: {
-        type: "text",
+        type: 'text',
       },
-      defaultValue: "Label",
+      defaultValue: 'Label',
     },
     id: {
       control: {
-        type: "text",
+        type: 'text',
       },
-      defaultValue: "my-text-field",
+      defaultValue: 'my-text-field',
     },
   },
-};
+}
 
-export default meta;
+export default meta
 
 export const Variants = {
   args: {},
@@ -43,7 +43,7 @@ export const Variants = {
     <Box
       component="form"
       sx={{
-        "& > :not(style)": { m: 1, width: "25ch" },
+        '& > :not(style)': { m: 1, width: '25ch' },
       }}
       noValidate
       autoComplete="off"
@@ -57,14 +57,14 @@ export const Variants = {
   ),
   argTypes: {
     variant: {
-      defaultValue: "outlined",
-      control: { type: "select" },
-      options: ["outlined", "filled", "standard"],
+      defaultValue: 'outlined',
+      control: { type: 'select' },
+      options: ['outlined', 'filled', 'standard'],
     },
     size: {
-      defaultValue: "small",
-      control: { type: "select" },
-      options: ["small", "medium"],
+      defaultValue: 'small',
+      control: { type: 'select' },
+      options: ['small', 'medium'],
     },
   },
-};
+}

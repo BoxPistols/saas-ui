@@ -1,6 +1,10 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:storybook/recommended"
-  ]
+    "plugin:storybook/recommended",
+    "prettier" // Prettier との統合
+  ],
+  "rules": {
+    // ここにカスタムルールを追加
+  }
 }
