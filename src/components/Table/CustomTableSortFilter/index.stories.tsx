@@ -161,6 +161,13 @@ export const Default = () => {
         onPageChange={(_e, newPage) => setPage(newPage)}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={e => setRowsPerPage(+e.target.value)}
+        // 以下はオプションです
+        rowsPerPageOptions={[3, 5, 10, 20, 25, sortedData.length]}
+        labelRowsPerPage="Rows per page"
+        // 以下はオプションです
+        labelDisplayedRows={({ from, to, count }) =>
+          `${from}-${to} of ${count}`
+        }
       />
     </>
   )
