@@ -43,6 +43,7 @@ export const Default = () => {
     images: string[]
   }
 
+  // データの取得
   useEffect(() => {
     fetch('https://dummyjson.com/products')
       .then(response => response.json())

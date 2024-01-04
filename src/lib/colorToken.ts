@@ -74,7 +74,9 @@ export const colorData = {
     paper: '#FFFFFF',
   },
   common: {
-    black: '#000000',
+    black: '#123456',
+    // black: '#223354',
+    // black: '#000000',
     white: '#ffffff',
   },
   // ===== 独自のキーを追加 =====

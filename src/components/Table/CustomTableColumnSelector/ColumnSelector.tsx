@@ -9,6 +9,7 @@ import {
   Switch,
   FormControlLabel,
   IconButton,
+  Typography,
 } from '@mui/material'
 import ToggleOnOutlinedIcon from '@mui/icons-material/ToggleOnOutlined'
 import { TableColumn } from './Types'
@@ -61,23 +62,35 @@ export const ColumnSelector = ({
         justifyContent: 'flex-end',
       }}
     >
-      <IconButton
-        color="primary"
-        aria-controls="column-selector"
-        aria-haspopup="true"
-        onClick={handleMenuClick}
+      <Box
         sx={{
-          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
         }}
       >
-        <ToggleOnOutlinedIcon
+        <IconButton
+          color="primary"
+          aria-controls="column-selector"
+          aria-haspopup="true"
+          onClick={handleMenuClick}
           sx={{
-            '&.MuiSvgIcon-root': {
-              fontSize: '2.6rem',
-            },
+            cursor: 'pointer',
           }}
-        />
-      </IconButton>
+        >
+          <ToggleOnOutlinedIcon
+            sx={{
+              '&.MuiSvgIcon-root': {
+                fontSize: '2.6rem',
+              },
+            }}
+          />
+        </IconButton>
+        {/* Count Column */}
+        <Typography variant="body1">
+          {columns.length - hiddenColumns.length} / {columns.length}
+        </Typography>
+      </Box>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}

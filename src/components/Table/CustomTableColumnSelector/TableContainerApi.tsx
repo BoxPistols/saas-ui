@@ -1,7 +1,7 @@
 // TableContainerApi.tsx
 import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import GenericTable from './GenericTable'
-import {ColumnSelector} from './ColumnSelector'
+import { ColumnSelector } from './ColumnSelector'
 import { TableColumn } from './Types'
 import { Pagination } from '@mui/material'
 

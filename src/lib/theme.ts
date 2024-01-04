@@ -192,6 +192,10 @@ export const theme = createTheme({
       800: colorData.grey[800],
       900: colorData.grey[900],
     },
+    common: {
+      black: colorData.common.black,
+      white: colorData.common.white,
+    },
 
     // 独自カラー (surface)
     surfaceBackground: colorData.surface.background,
