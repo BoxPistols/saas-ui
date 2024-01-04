@@ -21,7 +21,7 @@ type ColumnSelectorProps<T> = {
   setHiddenColumns: Dispatch<SetStateAction<string[]>>
 }
 
-const ColumnSelector = ({
+export const ColumnSelector = ({
   columns,
   hiddenColumns,
   setHiddenColumns,
@@ -126,5 +126,3 @@ const ColumnSelector = ({
     </Box>
   )
 }
-
-export default ColumnSelector

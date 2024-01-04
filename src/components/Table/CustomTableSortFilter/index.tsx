@@ -1,10 +1,12 @@
-// Table/CustomTableSortFilter/index.tsx
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
-import { TableSortLabel } from '@mui/material'
+// Component: Components/Table/CustomTableSortFilter
+import {
+  TableSortLabel,
+  styled,
+  TableCell,
+  tableCellClasses,
+} from '@mui/material'
 
-import { styled, TableCell, tableCellClasses } from '@mui/material'
-
+// ----- SortFilter Props Type -----
 interface SortFilterProps {
   field: string
   fieldLabel: string
@@ -13,7 +15,7 @@ interface SortFilterProps {
   onSort: (field: string) => void
 }
 
-// ----- Cell BasicStyle -----
+// ----- Cell Component Original Style -----
 export const StyledTableCellSort = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.grey[900],
@@ -34,6 +36,19 @@ export const StyledTableCellSort = styled(TableCell)(({ theme }) => ({
   },
 }))
 
+// ----- SortFilter Component -----
+/**
+ *
+ * @param field ソート対象のフィールド
+ * @param fieldLabel ソート対象のフィールドのラベル
+ * @param sortField ソート対象のフィールド
+ * @param sortDirection ソート方向
+ *
+ * TableSortLabel https://mui.com/api/table-sort-label/
+ * @active ソート対象のフィールドかどうか
+ * @direction ソート方向
+ * @onSort ソート時のコールバック関数
+ */
 export const SortFilter = ({
   field,
   fieldLabel,
@@ -49,20 +64,6 @@ export const SortFilter = ({
         onClick={() => onSort(field)}
       >
         {fieldLabel}
-        {sortField === field &&
-          (sortDirection === 'asc' ? (
-            <ArrowUpwardIcon
-              sx={{
-                fontSize: '16px',
-              }}
-            />
-          ) : (
-            <ArrowDownwardIcon
-              sx={{
-                fontSize: '16px',
-              }}
-            />
-          ))}
       </TableSortLabel>
     </StyledTableCellSort>
   )
