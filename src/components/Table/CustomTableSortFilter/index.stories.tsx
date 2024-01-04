@@ -62,7 +62,7 @@ export const Default = () => {
     { field: 'brand', headerName: 'Brand' },
     { field: 'category', headerName: 'Category' },
     { field: 'thumbnail', headerName: 'Thumbnail' },
-    { field: 'images', headerName: 'Images' },
+    // { field: 'images', headerName: 'Images' },
   ]
 
   // ソートのハンドラー
@@ -116,9 +116,10 @@ export const Default = () => {
           <CustomTableHeader>
             {/* ----- SortFilter ----- */}
             {visibleColumns.map(column => (
+              // {/* ----- Thumbnail = image----- */}
               <SortFilter
                 key={column.field}
-                field={column.field}
+                field={column.field === 'thumbnail' ? 'image' : column.field}
                 fieldLabel={column.headerName}
                 sortField={sortField}
                 sortDirection={sortDirection}
@@ -130,16 +131,23 @@ export const Default = () => {
           <TableBody>
             {visibleData.map((product: Product, index: number) => (
               <CustomTableRow key={index}>
-                {/* ----- TableCell ----- */}
-                {visibleColumns.map(
-                  (
-                    column, // visibleColumns を使用
-                  ) => (
-                    <CustomTableCell key={column.field}>
-                      {product[column.field as keyof typeof product]}
-                    </CustomTableCell>
-                  ),
-                )}
+                {visibleColumns.map(column => (
+                  <CustomTableCell key={column.field}>
+                    {/* 'thumbnail' フィールドの場合は画像を表示します */}
+                    {column.field === 'thumbnail' ||
+                    column.field === 'images' ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={product.thumbnail}
+                        alt={product.title}
+                        style={{ maxWidth: '100px', maxHeight: '100px' }}
+                      />
+                    ) : (
+                      // それ以外のフィールドの場合はテキストを表示します
+                      product[column.field as keyof Product]
+                    )}
+                  </CustomTableCell>
+                ))}
               </CustomTableRow>
             ))}
           </TableBody>
