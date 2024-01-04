@@ -20,13 +20,15 @@ export default {
 
 // デフォルトストーリー
 export const Default = () => {
-  const [data, setData] = useState([])
-  const [sortField, setSortField] = useState<string | null>(null)
-  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
-  const [hiddenColumns, setHiddenColumns] = useState<string[]>([]) // 追加したステート
-  // pagenation
+  const [data, setData] = useState([]) // データの状態 初期値は空の配列
+  const [loading, setLoading] = useState(true) // データのローディング状態
+  const [sortField, setSortField] = useState<string | null>(null) // ソートのフィールド
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc') // ソートの方向
+  // Pagenation MUI標準のTablePagination
   const [page, setPage] = useState(1)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  // Column Selector
+  const [hiddenColumns, setHiddenColumns] = useState<string[]>([]) // 非表示のカラム
 
   // The type definition for the data
   type Product = {
@@ -42,13 +44,24 @@ export const Default = () => {
     thumbnail: string
     images: string[]
   }
+  // 未知のデータであれば、例えば以下の汎用的な型定義を行う
+  // type Product = {
+  //   [key: string]: string | number | string[] | undefined | null
+  // }
 
-  // データの取得
+  // モックデータの取得
   useEffect(() => {
+    setLoading(true) // データをフェッチする前にローディングを true に設定
     fetch('https://dummyjson.com/products')
       .then(response => response.json())
-      .then(json => setData(json.products))
-      .catch(error => console.error('Error fetching data:', error))
+      .then(json => {
+        setData(json.products)
+        setLoading(false) // データを設定した後にローディングを false に設定
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error)
+        setLoading(false) // エラーが発生した場合もローディングを false に設定
+      })
   }, [])
 
   // テーブルのカラム
@@ -65,6 +78,11 @@ export const Default = () => {
     { field: 'thumbnail', headerName: 'Thumbnail' },
     // { field: 'images', headerName: 'Images' },
   ]
+  // テーブルのカラム 未知のケース
+  // const visibleColumns = Object.keys(data[0] || {}).map(field => ({
+  //   field,
+  //   headerName: field,
+  // }))
 
   // ソートのハンドラー
   const handleSort = (field: string) => {
@@ -112,64 +130,70 @@ export const Default = () => {
         setHiddenColumns={setHiddenColumns} // ステートを渡すように変更
       />
       {/* ----- Table ----- */}
-      <CustomTableContainer>
-        <CustomTable>
-          <CustomTableHeader>
-            {/* ----- SortFilter ----- */}
-            {visibleColumns.map(column => (
-              // {/* ----- Thumbnail = image----- */}
-              <SortFilter
-                key={column.field}
-                field={column.field === 'thumbnail' ? 'image' : column.field}
-                fieldLabel={column.headerName}
-                sortField={sortField}
-                sortDirection={sortDirection}
-                onSort={handleSort}
-              />
-            ))}
-          </CustomTableHeader>
-          {/* ----- TableBody ----- */}
-          <TableBody>
-            {visibleData.map((product: Product, index: number) => (
-              <CustomTableRow key={index}>
-                {visibleColumns.map(column => (
-                  <CustomTableCell key={column.field}>
-                    {/* 'thumbnail' フィールドの場合は画像を表示します */}
-                    {column.field === 'thumbnail' ||
-                    column.field === 'images' ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={product.thumbnail}
-                        alt={product.title}
-                        style={{ maxWidth: '100px', maxHeight: '100px' }}
-                      />
-                    ) : (
-                      // それ以外のフィールドの場合はテキストを表示します
-                      product[column.field as keyof Product]
-                    )}
-                  </CustomTableCell>
-                ))}
-              </CustomTableRow>
-            ))}
-          </TableBody>
-        </CustomTable>
-      </CustomTableContainer>
+      {loading ? (
+        `Loading...`
+      ) : (
+        <CustomTableContainer>
+          <CustomTable>
+            <CustomTableHeader>
+              {/* ----- SortFilter ----- */}
+              {visibleColumns.map(column => (
+                // {/* ----- Thumbnail = image----- */}
+                <SortFilter
+                  key={column.field}
+                  field={column.field === 'thumbnail' ? 'image' : column.field}
+                  fieldLabel={column.headerName}
+                  sortField={sortField}
+                  sortDirection={sortDirection}
+                  onSort={handleSort}
+                />
+              ))}
+            </CustomTableHeader>
+            {/* ----- TableBody ----- */}
+            <TableBody>
+              {visibleData.map((product: Product, index: number) => (
+                <CustomTableRow key={index}>
+                  {visibleColumns.map(column => (
+                    <CustomTableCell key={column.field}>
+                      {/* 'thumbnail' フィールドの場合は画像を表示します */}
+                      {column.field === 'thumbnail' ||
+                      column.field === 'images' ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={product.thumbnail}
+                          alt={product.title}
+                          style={{ maxWidth: '100px', maxHeight: '100px' }}
+                        />
+                      ) : (
+                        // それ以外のフィールドの場合はテキストを表示します
+                        product[column.field as keyof Product]
+                      )}
+                    </CustomTableCell>
+                  ))}
+                </CustomTableRow>
+              ))}
+            </TableBody>
+          </CustomTable>
+        </CustomTableContainer>
+      )}
       {/* ----- Pagination ----- */}
-      <TablePagination
-        component="div"
-        count={sortedData.length}
-        page={page}
-        onPageChange={(_e, newPage) => setPage(newPage)}
-        rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={e => setRowsPerPage(+e.target.value)}
-        // 以下はオプションです
-        rowsPerPageOptions={[3, 5, 10, 20, 25, sortedData.length]}
-        labelRowsPerPage="Rows per page"
-        // 以下はオプションです
-        labelDisplayedRows={({ from, to, count }) =>
-          `${from}-${to} of ${count}`
-        }
-      />
+      {!loading && (
+        <TablePagination
+          component="div"
+          count={sortedData.length}
+          page={page}
+          onPageChange={(_e, newPage) => setPage(newPage)}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={e => setRowsPerPage(+e.target.value)}
+          // 以下はオプションです
+          rowsPerPageOptions={[3, 5, 10, 20, 25, sortedData.length]}
+          labelRowsPerPage="Rows per page"
+          // 以下はオプションです
+          labelDisplayedRows={({ from, to, count }) =>
+            `${from}-${to} of ${count}`
+          }
+        />
+      )}
     </>
   )
 }
