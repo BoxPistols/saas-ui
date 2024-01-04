@@ -1,40 +1,56 @@
 // Table/CustomTableSortFilter/index.tsx
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
-import { TableSortLabel, styled } from '@mui/material'
-import { StyledTableCell } from '@/components/Table/Styled/StyledTableCell'
+import { TableSortLabel } from '@mui/material'
 
+import { styled, TableCell, tableCellClasses } from '@mui/material'
 
-interface SortFilterProps<T> {
-  field: keyof T
+interface SortFilterProps {
+  field: string
   fieldLabel: string
-  sortField: keyof T | null
+  sortField: string | null
   sortDirection: 'asc' | 'desc'
-  onSort: (field: keyof T) => void
+  onSort: (field: string) => void
 }
 
-export const SortFilter = <T,>({
+// ----- Cell BasicStyle -----
+export const StyledTableCellSort = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.grey[900],
+    color: theme.palette.common.white,
+    "> span:not([class*='MuiIconButton-root'])": {
+      whiteSpace: 'nowrap',
+    },
+    '> .MuiTableSortLabel-root, .MuiTableSortLabel-root:hover, .MuiTableSortLabel-root.Mui-active':
+      {
+        color: 'white',
+        '>.MuiTableSortLabel-icon': {
+          color: 'white',
+        },
+      },
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}))
+
+export const SortFilter = ({
   field,
   fieldLabel,
   sortField,
   sortDirection,
   onSort,
-}: SortFilterProps<T>) => {
+}: SortFilterProps) => {
   return (
-    <StyledTableCell>
+    <StyledTableCellSort>
       <TableSortLabel
         active={sortField === field}
         direction={sortField === field ? sortDirection : 'asc'}
         onClick={() => onSort(field)}
-        sx={{
-          '&.MuiTableSortLabel-root': {
-            color: 'white',
-          },
-        }}
       >
         {fieldLabel}
-        {sortField === field ? (
-          sortDirection === 'asc' ? (
+        {sortField === field &&
+          (sortDirection === 'asc' ? (
             <ArrowUpwardIcon
               sx={{
                 fontSize: '16px',
@@ -46,9 +62,8 @@ export const SortFilter = <T,>({
                 fontSize: '16px',
               }}
             />
-          )
-        ) : null}
+          ))}
       </TableSortLabel>
-    </StyledTableCell>
+    </StyledTableCellSort>
   )
 }

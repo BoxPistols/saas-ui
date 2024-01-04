@@ -32,7 +32,7 @@ type Props = ElementProps & {
 // ----- Cell BasicStyle -----
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.grey[900],
     color: theme.palette.common.white,
     "> span:not([class*='MuiIconButton-root'])": {
       whiteSpace: 'nowrap',
@@ -124,7 +124,7 @@ const StyledTableCellAction = styled(TableCell)(({ theme }) => ({
     position: `sticky`,
     top: 0,
     right: 0,
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.grey[900],
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {

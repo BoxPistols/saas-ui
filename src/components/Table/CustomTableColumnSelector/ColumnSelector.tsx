@@ -1,5 +1,5 @@
 // ColumnSelector.tsx
-import React, { useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 import {
   Box,
   Stack,
@@ -15,15 +15,17 @@ import { TableColumn } from './Types'
 
 type ColumnSelectorProps<T> = {
   columns: TableColumn<T>[]
-  hiddenColumns: (keyof T)[]
-  setHiddenColumns: React.Dispatch<React.SetStateAction<(keyof T)[]>>
+  // hiddenColumns: (keyof T)[]
+  hiddenColumns: string[]
+  // setHiddenColumns: React.Dispatch<React.SetStateAction<(keyof T)[]>>
+  setHiddenColumns: Dispatch<SetStateAction<string[]>>
 }
 
-function ColumnSelector<T>({
+const ColumnSelector = ({
   columns,
   hiddenColumns,
   setHiddenColumns,
-}: ColumnSelectorProps<T>) {
+}: ColumnSelectorProps<any>) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -34,11 +36,12 @@ function ColumnSelector<T>({
     setAnchorEl(null)
   }
 
-  const toggleColumnVisibility = (field: keyof T) => {
-    setHiddenColumns(current =>
-      current.includes(field)
-        ? current.filter(f => f !== field)
-        : [...current, field],
+  // トグルスイッチのハンドラー
+  const toggleColumn = (column: string) => {
+    setHiddenColumns(prevHiddenColumns =>
+      prevHiddenColumns.includes(column)
+        ? prevHiddenColumns.filter(c => c !== column)
+        : [...prevHiddenColumns, column],
     )
   }
 
@@ -48,7 +51,7 @@ function ColumnSelector<T>({
 
   const handleHideAll = () => {
     // setHiddenColumns(columns.map((column) => column.field))
-    setHiddenColumns(columns.slice(1).map(column => column.field))
+    setHiddenColumns(columns.slice(1).map(column => column.field.toString()))
   }
 
   return (
@@ -85,8 +88,8 @@ function ColumnSelector<T>({
             <FormControlLabel
               control={
                 <Switch
-                  checked={!hiddenColumns.includes(column.field)}
-                  onChange={() => toggleColumnVisibility(column.field)}
+                  checked={!hiddenColumns.includes(column.field.toString())}
+                  onChange={() => toggleColumn(column.field.toString())}
                 />
               }
               label={column.headerName}

@@ -1,5 +1,5 @@
 // TableContainerApi.tsx
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import GenericTable from './GenericTable'
 import ColumnSelector from './ColumnSelector'
 import { TableColumn } from './Types'
@@ -51,8 +51,10 @@ function TableContainerApi<T>({
         <>
           <ColumnSelector
             columns={initialColumns}
-            hiddenColumns={hiddenColumns}
-            setHiddenColumns={setHiddenColumns}
+            hiddenColumns={hiddenColumns.map(String)}
+            setHiddenColumns={
+              setHiddenColumns as Dispatch<SetStateAction<string[]>>
+            }
           />
           <GenericTable
             data={data}

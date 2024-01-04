@@ -14,7 +14,7 @@ type Props = {
   sx?: SxProps
 }
 
-export const CustomTable = ({
+export const CustomTable: React.FC<Props & ElementProps> = ({
   children,
   caption,
   sx,
