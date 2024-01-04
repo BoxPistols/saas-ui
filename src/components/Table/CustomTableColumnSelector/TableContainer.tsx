@@ -33,7 +33,9 @@ function TableContainer() {
       <ColumnSelector
         columns={productColumns}
         hiddenColumns={hiddenColumns}
-        setHiddenColumns={setHiddenColumns as React.Dispatch<React.SetStateAction<string[]>>}
+        setHiddenColumns={
+          setHiddenColumns as React.Dispatch<React.SetStateAction<string[]>>
+        }
       />
       <GenericTable
         data={data}
