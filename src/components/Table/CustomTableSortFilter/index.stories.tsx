@@ -70,7 +70,7 @@ export const Default = () => {
   useEffect(() => {
     // ソート処理を行い、ソートされたデータを`sortedData`にセットします。
     const sorted = [...data].sort((a, b) => {
-      const fieldA = sortField ? a[sortField] : null;
+      const fieldA = sortField ? a[sortField] : null
       const fieldB = b[sortField || '']
       if (fieldA !== null && fieldB !== null && fieldA < fieldB) {
         return sortDirection === 'asc' ? -1 : 1
@@ -158,27 +158,33 @@ export const Default = () => {
             </CustomTableHeader>
             {/* ----- TableBody ----- */}
             <TableBody>
-              {visibleData.map((product: Product, index) => (
-                <CustomTableRow key={index}>
-                  {visibleColumns.map(column => (
-                    <CustomTableCell key={column.field}>
-                      {/* 'thumbnail' フィールドの場合は画像を表示します */}
-                      {column.field === 'thumbnail' ||
-                      column.field === 'images' ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={product.thumbnail}
-                          alt={product.title}
-                          style={{ maxWidth: '100px', maxHeight: '100px' }}
-                        />
-                      ) : (
-                        // それ以外のフィールドの場合はテキストを表示します
-                        product[column.field as keyof Product]
-                      )}
-                    </CustomTableCell>
-                  ))}
+              {sortedData.length > 0 ? (
+                visibleData.map((product: Product, index) => (
+                  <CustomTableRow key={index}>
+                    {visibleColumns.map(column => (
+                      <CustomTableCell key={column.field}>
+                        {/* 'thumbnail' フィールドの場合は画像を表示します */}
+                        {column.field === 'thumbnail' ||
+                        column.field === 'images' ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={product.thumbnail}
+                            alt={product.title}
+                            style={{ maxWidth: '100px', maxHeight: '100px' }}
+                          />
+                        ) : (
+                          // それ以外のフィールドの場合はテキストを表示します
+                          product[column.field as keyof Product]
+                        )}
+                      </CustomTableCell>
+                    ))}
+                  </CustomTableRow>
+                ))
+              ) : (
+                <CustomTableRow>
+                  <CustomTableCell>No data</CustomTableCell>
                 </CustomTableRow>
-              ))}
+              )}
             </TableBody>
           </CustomTable>
         </CustomTableContainer>
