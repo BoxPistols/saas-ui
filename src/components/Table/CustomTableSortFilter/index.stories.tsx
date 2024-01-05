@@ -50,19 +50,39 @@ export const Default = () => {
   // }
 
   // モックデータの取得
+  const [sortedData, setSortedData] = useState([]) // 初期値を空の配列に設定
+  // モックデータの取得
   useEffect(() => {
-    setLoading(true) // データをフェッチする前にローディングを true に設定
+    setLoading(true)
     fetch('https://dummyjson.com/products')
       .then(response => response.json())
       .then(json => {
+        console.log(json.products) // データ構造をチェック
         setData(json.products)
-        setLoading(false) // データを設定した後にローディングを false に設定
+        setLoading(false)
       })
       .catch(error => {
         console.error('Error fetching data:', error)
-        setLoading(false) // エラーが発生した場合もローディングを false に設定
+        setLoading(false)
       })
   }, [])
+
+  useEffect(() => {
+    // ソート処理を行い、ソートされたデータを`sortedData`にセットします。
+    const sorted = [...data].sort((a, b) => {
+      const fieldA = sortField ? a[sortField] : null;
+      const fieldB = b[sortField || '']
+      if (fieldA !== null && fieldB !== null && fieldA < fieldB) {
+        return sortDirection === 'asc' ? -1 : 1
+      }
+      if (fieldA !== null && fieldB !== null && fieldA > fieldB) {
+        return sortDirection === 'asc' ? 1 : -1
+      }
+      return 0
+    })
+
+    setSortedData(sorted)
+  }, [data, sortField, sortDirection])
 
   // テーブルのカラム
   const columns = [
@@ -95,19 +115,6 @@ export const Default = () => {
       setSortDirection('asc')
     }
   }
-
-  // ... ソートとページネーションのロジック
-  const sortedData = data.sort((a, b) => {
-    const fieldA = a[sortField!]
-    const fieldB = b[sortField!]
-    if (fieldA < fieldB) {
-      return sortDirection === 'asc' ? -1 : 1
-    }
-    if (fieldA > fieldB) {
-      return sortDirection === 'asc' ? 1 : -1
-    }
-    return 0
-  })
 
   // ----- Pagenation
   const visibleData = sortedData.slice(
@@ -151,7 +158,7 @@ export const Default = () => {
             </CustomTableHeader>
             {/* ----- TableBody ----- */}
             <TableBody>
-              {visibleData.map((product: Product, index: number) => (
+              {visibleData.map((product: Product, index) => (
                 <CustomTableRow key={index}>
                   {visibleColumns.map(column => (
                     <CustomTableCell key={column.field}>
