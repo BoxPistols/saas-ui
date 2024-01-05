@@ -18,7 +18,8 @@ interface SortFilterProps {
 // ----- Cell Component Original Style -----
 export const StyledTableCellSort = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.grey[900],
+    // backgroundColor: theme.palette.grey[900],
+    backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
     "> span:not([class*='MuiIconButton-root'])": {
       whiteSpace: 'nowrap',
