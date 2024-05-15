@@ -3,24 +3,24 @@ import { Preview } from '@storybook/react'
 import { ThemeProvider } from '@mui/system'
 import { CssBaseline } from '@mui/material'
 import { theme } from '../src/lib/theme'
-// import { I18nextProvider } from "react-i18next"
-// import i18n from "../src/lib/i18n"
+import { I18nextProvider } from "react-i18next"
+import i18n from "../src/lib/i18n"
 
 // TOD0: lang
-// export const globalTypes = {
-//   locale: {
-//     name: "lng",
-//     description: "Internationalization locale",
-//     defaultValue: "ja",
-//     toolbar: {
-//       icon: "globe",
-//       items: [
-//         { value: "ja", title: "日本語" },
-//         { value: "en", title: "English" },
-//       ],
-//     },
-//   },
-// }
+export const globalTypes = {
+  locale: {
+    name: "lng",
+    description: "Internationalization locale",
+    defaultValue: "ja",
+    toolbar: {
+      icon: "globe",
+      items: [
+        { value: "ja", title: "日本語" },
+        { value: "en", title: "English" },
+      ],
+    },
+  },
+}
 
 import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport'
 
